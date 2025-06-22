@@ -1,0 +1,4004 @@
+{
+    "Name": "Aglaea",
+    "Desc": "In that holy city kissed by the dawn, the weaver caresses the golden threads, entwining fates.\\nThe Chrysos Heir that bears the \"Romance\" Coreflame gathered the world's heroes, leading them on a long journey once more\\n— to topple the gods, reclaim the divine flame, and grant rebirth to the nearly fallen Amphoreus.",
+    "CharaInfo": {
+        "Camp": null,
+        "VA": {
+            "Chinese": null,
+            "Japanese": null,
+            "Korean": null,
+            "English": null
+        },
+        "Stories": {
+            "0": null,
+            "1": null,
+            "2": null,
+            "3": null,
+            "4": null
+        },
+        "Voicelines": []
+    },
+    "Rarity": "CombatPowerAvatarRarityType5",
+    "AvatarVOTag": "aglaea",
+    "SPNeed": 350,
+    "BaseType": "Memory",
+    "DamageType": "Thunder",
+    "Ranks": {
+        "1": {
+            "Id": 140201,
+            "Name": "Drift at the Whim of Venus",
+            "Desc": "The enemy afflicted with \"Seam Stitch\" takes <unbreak>#1[i]%</unbreak> increased DMG. After Aglaea or Garmentmaker attacks this target, additionally regenerates <unbreak>#2[i]</unbreak> Energy.",
+            "ParamList": [
+                0.1500000001396984,
+                20
+            ]
+        },
+        "2": {
+            "Id": 140202,
+            "Name": "Sail on the Raft of Eyelids",
+            "Desc": "When Aglaea or Garmentmaker takes action, enables the DMG dealt by Aglaea and Garmentmaker to ignore <unbreak>#1[i]%</unbreak> of the target's DEF. This effect stacks up to <unbreak>#2[i]</unbreak> time(s) and lasts until any unit, other than Aglaea or Garmentmaker, actively uses an ability.",
+            "ParamList": [
+                0.14000000013038516,
+                3
+            ]
+        },
+        "3": {
+            "Id": 140203,
+            "Name": "Bequeath in the Coalescence of Dew",
+            "Desc": "Skill Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>.\\nBasic ATK Lv. +1, up to a maximum of Lv. <unbreak>10</unbreak>.\\nMemosprite Talent Lv. +1, up to a maximum of Lv. <unbreak>10</unbreak>.",
+            "ParamList": []
+        },
+        "4": {
+            "Id": 140204,
+            "Name": "Flicker Below the Surface of Marble",
+            "Desc": "The SPD Boost effect from the Memosprite Talent has its max stack limit increased by <unbreak>#1[i]</unbreak>. After Aglaea uses an attack, can also make Garmentmaker gain the SPD Boost effect from the Memosprite Talent.",
+            "ParamList": [
+                1,
+                2
+            ]
+        },
+        "5": {
+            "Id": 140205,
+            "Name": "Weave Under the Shroud of Woe",
+            "Desc": "Ultimate Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>.\\nTalent Lv. +2, up to a maximum of Lv. <unbreak>15</unbreak>.\\nMemosprite Skill Lv. +1, up to a maximum of Lv. <unbreak>10</unbreak>.",
+            "ParamList": []
+        },
+        "6": {
+            "Id": 140206,
+            "Name": "Fluctuate in the Tapestry of Fates",
+            "Desc": "While Aglaea is in \"Supreme Stance,\" increases her and Garmentmaker's Lightning <u>RES PEN</u> by <unbreak>#1[i]%</unbreak>. When Aglaea's or Garmentmaker's SPD is greater than <unbreak>160</unbreak>/<unbreak>240</unbreak>/<unbreak>320</unbreak>, the <u>Joint ATK</u> DMG dealt by them increases by <unbreak>#2[i]%</unbreak>/<unbreak>#3[i]%</unbreak>/<unbreak>#4[i]%</unbreak>.",
+            "ParamList": [
+                0.20000000018626451,
+                0.10000000009313226,
+                0.3000000002793968,
+                0.6000000005587935
+            ]
+        }
+    },
+    "Skills": {
+        "140201": {
+            "Id": 140201,
+            "Name": "Thorned Nectar",
+            "Desc": "Deals Lightning DMG equal to <color=#f29e38ff><unbreak>#1[i]%</unbreak></color> of Aglaea's ATK to one designated enemy.",
+            "Type": "Normal",
+            "Tag": "SingleAttack",
+            "SPBase": 20,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": 1,
+            "ShowStanceList": [
+                30,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        0.5000000004656613,
+                        1
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        0.6000000005587935,
+                        1
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        0.7000000006519258,
+                        1
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        0.8000000007450581,
+                        1
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        0.9000000008381903,
+                        1
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        1,
+                        1
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        1.1000000000931323,
+                        1
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        1.2000000001862645,
+                        1
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        1.3000000002793968,
+                        1
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        1.400000000372529,
+                        1
+                    ]
+                }
+            }
+        },
+        "140202": {
+            "Id": 140202,
+            "Name": "Rise, Exalted Renown",
+            "Desc": "Restores HP to Garmentmaker by <color=#f29e38ff><unbreak>#1[i]%</unbreak></color> of its Max HP. If Garmentmaker is absent, then <u>summons the memosprite</u> Garmentmaker and makes this unit immediately take action.",
+            "Type": "BPSkill",
+            "Tag": "Summon",
+            "SPBase": 20,
+            "BPNeed": 1,
+            "BPAdd": null,
+            "ShowStanceList": [
+                0,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        0.25000000023283064,
+                        0,
+                        5
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        0.27499999990686774,
+                        0,
+                        5
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        0.3000000002793968,
+                        0,
+                        5
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        0.32499999995343387,
+                        0,
+                        5
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        0.3500000003259629,
+                        0,
+                        5
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        0.375,
+                        0,
+                        5
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        0.4062500004656613,
+                        0,
+                        5
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        0.43750000023283064,
+                        0,
+                        5
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        0.46875000069849193,
+                        0,
+                        5
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        0.5000000004656613,
+                        0,
+                        5
+                    ]
+                },
+                "11": {
+                    "Level": 11,
+                    "ParamList": [
+                        0.5250000001396984,
+                        0,
+                        5
+                    ]
+                },
+                "12": {
+                    "Level": 12,
+                    "ParamList": [
+                        0.5500000005122274,
+                        0,
+                        5
+                    ]
+                },
+                "13": {
+                    "Level": 13,
+                    "ParamList": [
+                        0.5750000001862645,
+                        0,
+                        5
+                    ]
+                },
+                "14": {
+                    "Level": 14,
+                    "ParamList": [
+                        0.6000000005587935,
+                        0,
+                        5
+                    ]
+                },
+                "15": {
+                    "Level": 15,
+                    "ParamList": [
+                        0.6250000002328306,
+                        0,
+                        5
+                    ]
+                }
+            }
+        },
+        "140203": {
+            "Id": 140203,
+            "Name": "Dance, <unbreak>Destined Weaveress</unbreak>",
+            "Desc": "<u>Summons the memosprite</u> Garmentmaker. If Garmentmaker is already on the field, then restores its HP to max. Aglaea enters the \"Supreme Stance\" state and immediately takes action.\\nWhile in \"Supreme Stance,\" Aglaea gains the SPD Boost stacks from Garmentmaker's Memosprite Talent, with each stack increasing this unit's SPD by <color=#f29e38ff><unbreak>#1[f1]%</unbreak></color>. Enhances Basic ATK to \"Slash by a Thousandfold Kiss,\" and cannot use Skill. Garmentmaker is immune to <u>Crowd Control debuffs</u>.\\nA countdown appears on the Action Order, with its own SPD set at <unbreak>#4[i]</unbreak>. While the countdown exists, using Ultimate again will reset the countdown. When the countdown's turn starts, Garmentmaker self-destructs. When Garmentmaker disappears, Aglaea dispels the \"Supreme Stance\" state.",
+            "Type": "Ultra",
+            "Tag": "Enhance",
+            "SPBase": 5,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": null,
+            "ShowStanceList": [
+                0,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        0.10000000009313226,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        0.1049999997485429,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        0.11000000010244548,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        0.11499999975785613,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        0.12000000011175871,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        0.12499999976716936,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        0.13125000055879354,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        0.13749999995343387,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        0.14375000074505806,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        0.1500000001396984,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "11": {
+                    "Level": 11,
+                    "ParamList": [
+                        0.15499999979510903,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "12": {
+                    "Level": 12,
+                    "ParamList": [
+                        0.1600000001490116,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "13": {
+                    "Level": 13,
+                    "ParamList": [
+                        0.16499999980442226,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "14": {
+                    "Level": 14,
+                    "ParamList": [
+                        0.17000000015832484,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                },
+                "15": {
+                    "Level": 15,
+                    "ParamList": [
+                        0.17499999981373549,
+                        0,
+                        0,
+                        100,
+                        0,
+                        0
+                    ]
+                }
+            }
+        },
+        "140204": {
+            "Id": 140204,
+            "Name": "Rosy-Fingered",
+            "Desc": "The memosprite Garmentmaker has an initial SPD equal to <unbreak>#4[i]%</unbreak> of Aglaea's SPD and a Max HP equal to <color=#f29e38ff><unbreak>#5[i]%</unbreak></color> of Aglaea's Max HP plus <color=#f29e38ff><unbreak>#6[i]</unbreak></color>. While Garmentmaker is on the field, Aglaea's attacks inflict the target with the \"Seam Stitch\" state. After attacking enemies in the \"Seam Stitch\" state, further deals Lightning <u>Additional DMG</u> equal to <color=#f29e38ff><unbreak>#1[i]%</unbreak></color> of Aglaea's ATK. \"Seam Stitch\" only takes effect on the most recently inflicted target.",
+            "Type": null,
+            "Tag": "Enhance",
+            "SPBase": 10,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": null,
+            "ShowStanceList": [
+                0,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        0.12000000011175871,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.44000000040978193,
+                        180
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        0.13799999956972897,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.4675000002607703,
+                        247.50000000046566
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        0.15599999972619116,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.4950000001117587,
+                        315
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        0.17399999988265336,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.522500000661239,
+                        382.50000000046566
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        0.19200000003911555,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.5500000005122274,
+                        450
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        0.21000000019557774,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.5720000003930181,
+                        504
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        0.23250000039115548,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.5940000002738088,
+                        558
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        0.2549999998882413,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.6160000001545995,
+                        612
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        0.27750000008381903,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.6380000000353903,
+                        666
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        0.3000000002793968,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.6600000006146729,
+                        720
+                    ]
+                },
+                "11": {
+                    "Level": 11,
+                    "ParamList": [
+                        0.31799999973736703,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.6820000004954636,
+                        774
+                    ]
+                },
+                "12": {
+                    "Level": 12,
+                    "ParamList": [
+                        0.3359999998938292,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.7040000003762543,
+                        828
+                    ]
+                },
+                "13": {
+                    "Level": 13,
+                    "ParamList": [
+                        0.3540000000502914,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.726000000257045,
+                        882
+                    ]
+                },
+                "14": {
+                    "Level": 14,
+                    "ParamList": [
+                        0.3720000002067536,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.7480000001378357,
+                        936
+                    ]
+                },
+                "15": {
+                    "Level": 15,
+                    "ParamList": [
+                        0.3900000003632158,
+                        0,
+                        0,
+                        0.3500000003259629,
+                        0.7700000007171184,
+                        990
+                    ]
+                }
+            }
+        },
+        "140206": {
+            "Id": 140206,
+            "Name": "Attack",
+            "Desc": "Attacks an enemy, and when the battle starts, reduces their Toughness of the corresponding Type.",
+            "Type": "MazeNormal",
+            "Tag": "MazeAttack",
+            "SPBase": null,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": null,
+            "ShowStanceList": [
+                30,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": []
+                }
+            }
+        },
+        "140207": {
+            "Id": 140207,
+            "Name": "Meteoric Sunder",
+            "Desc": "<u>Summons the memosprite</u> Garmentmaker and launches a forward joint attack. After entering battle, regenerates <unbreak>#2[i]</unbreak> Energy and deals Lightning DMG equal to <unbreak>#1[i]%</unbreak> of Aglaea's ATK to all enemy targets. Then, randomly inflicts the \"Seam Stitch\" state on a random enemy target.",
+            "Type": "Maze",
+            "Tag": "MazeAttack",
+            "SPBase": null,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": null,
+            "ShowStanceList": [
+                60,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        1,
+                        30
+                    ]
+                }
+            }
+        },
+        "140208": {
+            "Id": 140208,
+            "Name": "Slash by a Thousandfold Kiss",
+            "Desc": "Aglaea and Garmentmaker launch a <u>Joint ATK</u> on the target, respectively dealing Lightning DMG equal to <color=#f29e38ff><unbreak>#1[f1]%</unbreak></color> of Aglaea's ATK and <color=#f29e38ff><unbreak>#3[f1]%</unbreak></color> of Garmentmaker's ATK to the target. Also, respectively deals Lightning DMG equal to <color=#f29e38ff><unbreak>#2[i]%</unbreak></color> of Aglaea's ATK and <color=#f29e38ff><unbreak>#4[i]%</unbreak></color> of Garmentmaker's ATK to adjacent targets.\\n\"Slash by a Thousandfold Kiss\" cannot recover Skill Points.",
+            "Type": "Normal",
+            "Tag": "Blast",
+            "SPBase": 20,
+            "BPNeed": -0.9999999997671694,
+            "BPAdd": null,
+            "ShowStanceList": [
+                60,
+                0,
+                30
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        1,
+                        0.45000000041909516,
+                        1,
+                        0.45000000041909516
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        1.2000000001862645,
+                        0.5400000005029142,
+                        1.2000000001862645,
+                        0.5400000005029142
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        1.400000000372529,
+                        0.6300000005867332,
+                        1.400000000372529,
+                        0.6300000005867332
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        1.6000000005587935,
+                        0.7200000006705523,
+                        1.6000000005587935,
+                        0.7200000006705523
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        1.800000000745058,
+                        0.8100000007543713,
+                        1.800000000745058,
+                        0.8100000007543713
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        2,
+                        0.9000000008381903,
+                        2,
+                        0.9000000008381903
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        2.2000000001862645,
+                        0.9900000009220093,
+                        2.2000000001862645,
+                        0.9900000009220093
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        2.400000000372529,
+                        1.0800000000745058,
+                        2.400000000372529,
+                        1.0800000000745058
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        2.6000000005587935,
+                        1.1700000001583248,
+                        2.6000000005587935,
+                        1.1700000001583248
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        2.800000000745058,
+                        1.2600000002421439,
+                        2.800000000745058,
+                        1.2600000002421439
+                    ]
+                }
+            }
+        },
+        "140209": {
+            "Id": 140209,
+            "Name": "Rise, Exalted Renown",
+            "Desc": null,
+            "Type": "BPSkill",
+            "Tag": "Restore",
+            "SPBase": 20,
+            "BPNeed": 1,
+            "BPAdd": null,
+            "ShowStanceList": [
+                0,
+                0,
+                0
+            ],
+            "SkillComboValueDelta": null,
+            "Level": {
+                "1": {
+                    "Level": 1,
+                    "ParamList": [
+                        0.25000000023283064
+                    ]
+                },
+                "2": {
+                    "Level": 2,
+                    "ParamList": [
+                        0.27499999990686774
+                    ]
+                },
+                "3": {
+                    "Level": 3,
+                    "ParamList": [
+                        0.3000000002793968
+                    ]
+                },
+                "4": {
+                    "Level": 4,
+                    "ParamList": [
+                        0.32499999995343387
+                    ]
+                },
+                "5": {
+                    "Level": 5,
+                    "ParamList": [
+                        0.3500000003259629
+                    ]
+                },
+                "6": {
+                    "Level": 6,
+                    "ParamList": [
+                        0.375
+                    ]
+                },
+                "7": {
+                    "Level": 7,
+                    "ParamList": [
+                        0.4062500004656613
+                    ]
+                },
+                "8": {
+                    "Level": 8,
+                    "ParamList": [
+                        0.43750000023283064
+                    ]
+                },
+                "9": {
+                    "Level": 9,
+                    "ParamList": [
+                        0.46875000069849193
+                    ]
+                },
+                "10": {
+                    "Level": 10,
+                    "ParamList": [
+                        0.5000000004656613
+                    ]
+                },
+                "11": {
+                    "Level": 11,
+                    "ParamList": [
+                        0.5250000001396984
+                    ]
+                },
+                "12": {
+                    "Level": 12,
+                    "ParamList": [
+                        0.5500000005122274
+                    ]
+                },
+                "13": {
+                    "Level": 13,
+                    "ParamList": [
+                        0.5750000001862645
+                    ]
+                },
+                "14": {
+                    "Level": 14,
+                    "ParamList": [
+                        0.6000000005587935
+                    ]
+                },
+                "15": {
+                    "Level": 15,
+                    "ParamList": [
+                        0.6250000002328306
+                    ]
+                }
+            }
+        }
+    },
+    "SkillTrees": {
+        "Point01": {
+            "1": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point01",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Normal.png",
+                "LevelUpSkillID": [
+                    140201,
+                    140208
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402001,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 1,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point02": {
+            "1": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 1,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 2500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 3,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 25000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "7": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "8": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 70000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 5,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 4,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "9": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "10": {
+                "Anchor": "Point02",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_BP.png",
+                "LevelUpSkillID": [
+                    140202,
+                    140209
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 240000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 13,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402002,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 2,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point03": {
+            "1": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 1,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 2500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 3,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 25000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "7": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "8": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 70000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 5,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 4,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "9": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "10": {
+                "Anchor": "Point03",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Ultra.png",
+                "LevelUpSkillID": [
+                    140203
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 240000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 13,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402003,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 3,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point04": {
+            "1": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 1,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 2500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 3,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 25000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 6,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "7": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "8": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 70000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 5,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 4,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "9": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "10": {
+                "Anchor": "Point04",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_Passive.png",
+                "LevelUpSkillID": [
+                    140204
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 240000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 13,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 10,
+                "ParamList": [],
+                "PointID": 1402004,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 4,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point05": {
+            "1": {
+                "Anchor": "Point05",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_1402_Maze.png",
+                "LevelUpSkillID": [
+                    140207
+                ],
+                "MaterialList": [],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402007,
+                "PointName": null,
+                "PointDesc": null,
+                "PointTriggerKey": 5,
+                "PointType": 2,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point06": {
+            "1": {
+                "Anchor": "Point06",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_SkillTree1.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 5000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 3,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [
+                    7.2000000001862645,
+                    3.6000000005587935
+                ],
+                "PointID": 1402101,
+                "PointName": "The Myopic's Doom",
+                "PointDesc": "While in \"Supreme Stance,\" increases Aglaea's and Garmentmaker's ATK by an amount equal to <unbreak>#1[i]%</unbreak> of Aglaea's SPD plus <unbreak>#2[i]%</unbreak> of Garmentmaker's SPD.",
+                "PointTriggerKey": 6,
+                "PointType": 3,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point07": {
+            "1": {
+                "Anchor": "Point07",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_SkillTree2.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 20000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 5,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [
+                    1
+                ],
+                "PointID": 1402102,
+                "PointName": "Last Thread of Fate",
+                "PointDesc": "When Garmentmaker disappears, up to <unbreak>#1[i]</unbreak> stack(s) of the SPD Boost from the Memosprite Talent can be retained. When Garmentmaker is summoned again, gains the corresponding number of SPD Boost stacks.",
+                "PointTriggerKey": 7,
+                "PointType": 3,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point08": {
+            "1": {
+                "Anchor": "Point08",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_1402_SkillTree3.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 160000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 8,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 241,
+                        "ItemNum": 1,
+                        "Rarity": "SuperRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110506,
+                        "ItemNum": 1,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [
+                    0.5000000004656613,
+                    0.5000000004656613
+                ],
+                "PointID": 1402103,
+                "PointName": "The Speeding Sol",
+                "PointDesc": "At the start of battle, if this unit's Energy is lower than <unbreak>#1[i]%</unbreak>, regenerates this unit's Energy to <unbreak>#2[i]%</unbreak>.",
+                "PointTriggerKey": 8,
+                "PointType": 3,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point09": {
+            "1": {
+                "Anchor": "Point09",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": 1,
+                "DefaultUnlock": false,
+                "Icon": "IconThunderAddedRatio.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 2500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402201,
+                "PointName": "DMG Boost: Lightning",
+                "PointDesc": null,
+                "PointTriggerKey": 9,
+                "PointType": 1,
+                "PrePoint": [],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "ThunderAddedRatio",
+                        "Value": 0.031999999890103936,
+                        "Name": "Lightning DMG Boost"
+                    }
+                ]
+            }
+        },
+        "Point10": {
+            "1": {
+                "Anchor": "Point10",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconCriticalChance.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 4000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 3,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 6,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402202,
+                "PointName": "CRIT Rate Boost",
+                "PointDesc": null,
+                "PointTriggerKey": 10,
+                "PointType": 1,
+                "PrePoint": [
+                    1402201
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "CriticalChanceBase",
+                        "Value": 0.026999999536201358,
+                        "Name": "CRIT Rate"
+                    }
+                ]
+            }
+        },
+        "Point11": {
+            "1": {
+                "Anchor": "Point11",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconThunderAddedRatio.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 9000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402203,
+                "PointName": "DMG Boost: Lightning",
+                "PointDesc": null,
+                "PointTriggerKey": 11,
+                "PointType": 1,
+                "PrePoint": [
+                    1402201
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "ThunderAddedRatio",
+                        "Value": 0.031999999890103936,
+                        "Name": "Lightning DMG Boost"
+                    }
+                ]
+            }
+        },
+        "Point12": {
+            "1": {
+                "Anchor": "Point12",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconDefence.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 9000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402204,
+                "PointName": "DEF Boost",
+                "PointDesc": null,
+                "PointTriggerKey": 12,
+                "PointType": 1,
+                "PrePoint": [
+                    1402101
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "DefenceAddedRatio",
+                        "Value": 0.05000000004656613,
+                        "Name": "DEF"
+                    }
+                ]
+            }
+        },
+        "Point13": {
+            "1": {
+                "Anchor": "Point13",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconThunderAddedRatio.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 19000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402205,
+                "PointName": "DMG Boost: Lightning",
+                "PointDesc": null,
+                "PointTriggerKey": 13,
+                "PointType": 1,
+                "PrePoint": [
+                    1402101
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "ThunderAddedRatio",
+                        "Value": 0.04799999948590994,
+                        "Name": "Lightning DMG Boost"
+                    }
+                ]
+            }
+        },
+        "Point14": {
+            "1": {
+                "Anchor": "Point14",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconCriticalChance.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 45000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 3,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 3,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402206,
+                "PointName": "CRIT Rate Boost",
+                "PointDesc": null,
+                "PointTriggerKey": 14,
+                "PointType": 1,
+                "PrePoint": [
+                    1402102
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "CriticalChanceBase",
+                        "Value": 0.0400000000372529,
+                        "Name": "CRIT Rate"
+                    }
+                ]
+            }
+        },
+        "Point15": {
+            "1": {
+                "Anchor": "Point15",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconThunderAddedRatio.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 45000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 3,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 3,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402207,
+                "PointName": "DMG Boost: Lightning",
+                "PointDesc": null,
+                "PointTriggerKey": 15,
+                "PointType": 1,
+                "PrePoint": [
+                    1402102
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "ThunderAddedRatio",
+                        "Value": 0.04799999948590994,
+                        "Name": "Lightning DMG Boost"
+                    }
+                ]
+            }
+        },
+        "Point16": {
+            "1": {
+                "Anchor": "Point16",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "IconDefence.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 7,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402208,
+                "PointName": "DEF Boost",
+                "PointDesc": null,
+                "PointTriggerKey": 16,
+                "PointType": 1,
+                "PrePoint": [
+                    1402103
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "DefenceAddedRatio",
+                        "Value": 0.07499999972060323,
+                        "Name": "DEF"
+                    }
+                ]
+            }
+        },
+        "Point17": {
+            "1": {
+                "Anchor": "Point17",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": 75,
+                "DefaultUnlock": false,
+                "Icon": "IconCriticalChance.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 160000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 8,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 8,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402209,
+                "PointName": "CRIT Rate Boost",
+                "PointDesc": null,
+                "PointTriggerKey": 17,
+                "PointType": 1,
+                "PrePoint": [
+                    1402208
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "CriticalChanceBase",
+                        "Value": 0.05299999983981252,
+                        "Name": "CRIT Rate"
+                    }
+                ]
+            }
+        },
+        "Point18": {
+            "1": {
+                "Anchor": "Point18",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": 80,
+                "DefaultUnlock": false,
+                "Icon": "IconThunderAddedRatio.png",
+                "LevelUpSkillID": [],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 160000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 8,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 8,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 1,
+                "ParamList": [],
+                "PointID": 1402210,
+                "PointName": "DMG Boost: Lightning",
+                "PointDesc": null,
+                "PointTriggerKey": 18,
+                "PointType": 1,
+                "PrePoint": [
+                    1402209
+                ],
+                "StatusAddList": [
+                    {
+                        "$type": "AvatarPropertyValue",
+                        "PropertyType": "ThunderAddedRatio",
+                        "Value": 0.06399999978020787,
+                        "Name": "Lightning DMG Boost"
+                    }
+                ]
+            }
+        },
+        "Point19": {
+            "1": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point19",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_Servant01.png",
+                "LevelUpSkillID": [
+                    1140201
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402301,
+                "PointName": "Thorned Snare",
+                "PointDesc": null,
+                "PointTriggerKey": 19,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        },
+        "Point20": {
+            "1": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": null,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": true,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "2": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": 2,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 3500,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110251,
+                        "ItemNum": 2,
+                        "Rarity": "NotNormal"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115001,
+                        "ItemNum": 4,
+                        "Rarity": "NotNormal"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "3": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": 3,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 7000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 2,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "4": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": 4,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 16000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110252,
+                        "ItemNum": 4,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115002,
+                        "ItemNum": 3,
+                        "Rarity": "Rare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "5": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": 5,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 35000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            },
+            "6": {
+                "Anchor": "Point20",
+                "AvatarPromotionLimit": 6,
+                "AvatarLevelLimit": null,
+                "DefaultUnlock": false,
+                "Icon": "SkillIcon_11402_ServantPassive.png",
+                "LevelUpSkillID": [
+                    1140203,
+                    1140205,
+                    1140206
+                ],
+                "MaterialList": [
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 2,
+                        "ItemNum": 140000,
+                        "Rarity": "Rare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 110253,
+                        "ItemNum": 6,
+                        "Rarity": "VeryRare"
+                    },
+                    {
+                        "$type": "ItemConfigRow",
+                        "ItemID": 115003,
+                        "ItemNum": 2,
+                        "Rarity": "VeryRare"
+                    }
+                ],
+                "MaxLevel": 6,
+                "ParamList": [],
+                "PointID": 1402302,
+                "PointName": "A Body Brewed by Tears",
+                "PointDesc": null,
+                "PointTriggerKey": 20,
+                "PointType": 4,
+                "PrePoint": [],
+                "StatusAddList": []
+            }
+        }
+    },
+    "Enhanced": {},
+    "Memosprite": {
+        "Name": "Garmentmaker",
+        "Icon": "SpriteOutput/ServantIconTeam/11402B.png",
+        "HPBase": "#6",
+        "HPInherit": "#5",
+        "HPSkill": 140204,
+        "SpeedBase": "0",
+        "SpeedInherit": "#4",
+        "SpeedSkill": 140204,
+        "Aggro": 125,
+        "Skills": {
+            "1140201": {
+                "Name": "Thorned Snare",
+                "Desc": "Deals Lightning DMG equal to <color=#f29e38ff><unbreak>#1[i]%</unbreak></color> of ATK to one enemy and Lightning DMG equal to <color=#f29e38ff><unbreak>#2[i]%</unbreak></color> of ATK to adjacent targets.",
+                "Type": "Servant",
+                "Tag": "Blast",
+                "SPBase": 10,
+                "BPNeed": -0.9999999997671694,
+                "BPAdd": null,
+                "ShowStanceList": [
+                    30,
+                    0,
+                    15
+                ],
+                "SkillComboValueDelta": null,
+                "Level": {
+                    "1": {
+                        "Level": 1,
+                        "ParamList": [
+                            0.5500000005122274,
+                            0.33000000030733645,
+                            1
+                        ]
+                    },
+                    "2": {
+                        "Level": 2,
+                        "ParamList": [
+                            0.6600000006146729,
+                            0.3959999999497086,
+                            1
+                        ]
+                    },
+                    "3": {
+                        "Level": 3,
+                        "ParamList": [
+                            0.7700000007171184,
+                            0.46200000029057264,
+                            1
+                        ]
+                    },
+                    "4": {
+                        "Level": 4,
+                        "ParamList": [
+                            0.8800000008195639,
+                            0.5279999999329448,
+                            1
+                        ]
+                    },
+                    "5": {
+                        "Level": 5,
+                        "ParamList": [
+                            0.9900000009220093,
+                            0.5940000002738088,
+                            1
+                        ]
+                    },
+                    "6": {
+                        "Level": 6,
+                        "ParamList": [
+                            1.1000000000931323,
+                            0.6600000006146729,
+                            1
+                        ]
+                    },
+                    "7": {
+                        "Level": 7,
+                        "ParamList": [
+                            1.2100000001955777,
+                            0.726000000257045,
+                            1
+                        ]
+                    },
+                    "8": {
+                        "Level": 8,
+                        "ParamList": [
+                            1.3200000002980232,
+                            0.7920000005979091,
+                            1
+                        ]
+                    },
+                    "9": {
+                        "Level": 9,
+                        "ParamList": [
+                            1.4300000004004687,
+                            0.8580000002402812,
+                            1
+                        ]
+                    },
+                    "10": {
+                        "Level": 10,
+                        "ParamList": [
+                            1.5400000005029142,
+                            0.9240000005811453,
+                            1
+                        ]
+                    }
+                }
+            },
+            "1140203": {
+                "Name": "A Body Brewed by Tears",
+                "Desc": "After attacking an enemy afflicted with \"Seam Stitch,\" increases this unit's SPD by <color=#f29e38ff><unbreak>#1[i]</unbreak></color>, stacking up to <unbreak>#3[i]</unbreak> time(s). When Garmentmaker takes action, automatically uses \"Thorned Snare,\" prioritizing enemies under the \"Seam Stitch\" state.",
+                "Type": null,
+                "Tag": "Enhance",
+                "SPBase": null,
+                "BPNeed": -0.9999999997671694,
+                "BPAdd": null,
+                "ShowStanceList": [
+                    0,
+                    0,
+                    0
+                ],
+                "SkillComboValueDelta": null,
+                "Level": {
+                    "1": {
+                        "Level": 1,
+                        "ParamList": [
+                            44,
+                            3,
+                            6
+                        ]
+                    },
+                    "2": {
+                        "Level": 2,
+                        "ParamList": [
+                            46.200000000186265,
+                            3,
+                            6
+                        ]
+                    },
+                    "3": {
+                        "Level": 3,
+                        "ParamList": [
+                            48.40000000037253,
+                            3,
+                            6
+                        ]
+                    },
+                    "4": {
+                        "Level": 4,
+                        "ParamList": [
+                            50.60000000055879,
+                            3,
+                            6
+                        ]
+                    },
+                    "5": {
+                        "Level": 5,
+                        "ParamList": [
+                            52.80000000074506,
+                            3,
+                            6
+                        ]
+                    },
+                    "6": {
+                        "Level": 6,
+                        "ParamList": [
+                            55,
+                            3,
+                            6
+                        ]
+                    },
+                    "7": {
+                        "Level": 7,
+                        "ParamList": [
+                            57.200000000186265,
+                            3,
+                            6
+                        ]
+                    },
+                    "8": {
+                        "Level": 8,
+                        "ParamList": [
+                            59.40000000037253,
+                            3,
+                            6
+                        ]
+                    },
+                    "9": {
+                        "Level": 9,
+                        "ParamList": [
+                            61.60000000055879,
+                            3,
+                            6
+                        ]
+                    },
+                    "10": {
+                        "Level": 10,
+                        "ParamList": [
+                            63.80000000074506,
+                            3,
+                            6
+                        ]
+                    }
+                }
+            },
+            "1140205": {
+                "Name": "The Speeding Summer",
+                "Desc": "When Garmentmaker is summoned, this unit's <u>action advances</u> by <unbreak>#1[i]%</unbreak>.",
+                "Type": null,
+                "Tag": "Enhance",
+                "SPBase": null,
+                "BPNeed": -0.9999999997671694,
+                "BPAdd": null,
+                "ShowStanceList": [
+                    0,
+                    0,
+                    0
+                ],
+                "SkillComboValueDelta": null,
+                "Level": {
+                    "1": {
+                        "Level": 1,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "2": {
+                        "Level": 2,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "3": {
+                        "Level": 3,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "4": {
+                        "Level": 4,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "5": {
+                        "Level": 5,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "6": {
+                        "Level": 6,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "7": {
+                        "Level": 7,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "8": {
+                        "Level": 8,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "9": {
+                        "Level": 9,
+                        "ParamList": [
+                            1
+                        ]
+                    },
+                    "10": {
+                        "Level": 10,
+                        "ParamList": [
+                            1
+                        ]
+                    }
+                }
+            },
+            "1140206": {
+                "Name": "Bloom of Drying Grass",
+                "Desc": "When Garmentmaker disappears, regenerates <unbreak>#1[i]</unbreak> Energy for Aglaea.",
+                "Type": null,
+                "Tag": "Enhance",
+                "SPBase": null,
+                "BPNeed": -0.9999999997671694,
+                "BPAdd": null,
+                "ShowStanceList": [
+                    0,
+                    0,
+                    0
+                ],
+                "SkillComboValueDelta": null,
+                "Level": {
+                    "1": {
+                        "Level": 1,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "2": {
+                        "Level": 2,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "3": {
+                        "Level": 3,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "4": {
+                        "Level": 4,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "5": {
+                        "Level": 5,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "6": {
+                        "Level": 6,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "7": {
+                        "Level": 7,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "8": {
+                        "Level": 8,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "9": {
+                        "Level": 9,
+                        "ParamList": [
+                            20
+                        ]
+                    },
+                    "10": {
+                        "Level": 10,
+                        "ParamList": [
+                            20
+                        ]
+                    }
+                }
+            }
+        },
+        "Talent": {}
+    },
+    "Unique": {},
+    "Stats": {
+        "0": {
+            "AttackBase": 95.04000000003725,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 66,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 168.96000000089407,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 4000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115001,
+                    "ItemNum": 5
+                }
+            ]
+        },
+        "1": {
+            "AttackBase": 133.05599999963306,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 92.40000000037253,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 236.54400000022724,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 8000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115001,
+                    "ItemNum": 10
+                }
+            ]
+        },
+        "2": {
+            "AttackBase": 171.07199999992736,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 118.80000000074506,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 304.1279999995604,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 16000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115002,
+                    "ItemNum": 6
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110424,
+                    "ItemNum": 3
+                }
+            ]
+        },
+        "3": {
+            "AttackBase": 209.08799999952316,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 145.20000000018626,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 371.7120000005234,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 40000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115002,
+                    "ItemNum": 9
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110424,
+                    "ItemNum": 7
+                }
+            ]
+        },
+        "4": {
+            "AttackBase": 247.10399999981746,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 171.6000000005588,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 439.2959999998566,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 80000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115003,
+                    "ItemNum": 6
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110424,
+                    "ItemNum": 20
+                }
+            ]
+        },
+        "5": {
+            "AttackBase": 285.12000000011176,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 198,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 506.88000000081956,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 160000
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 115003,
+                    "ItemNum": 9
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110424,
+                    "ItemNum": 35
+                }
+            ]
+        },
+        "6": {
+            "AttackBase": 323.13599999970756,
+            "AttackAdd": 4.752000000560656,
+            "DefenceBase": 224.40000000037253,
+            "DefenceAdd": 3.3000000002793968,
+            "HPBase": 574.4640000001527,
+            "HPAdd": 8.447999999858439,
+            "SpeedBase": 102,
+            "CriticalChance": 0.05000000004656613,
+            "CriticalDamage": 0.5000000004656613,
+            "BaseAggro": 100,
+            "Cost": []
+        }
+    },
+    "Relics": {
+        "AvatarID": 1402,
+        "Set4IDList": [
+            123,
+            102,
+            109
+        ],
+        "Set2IDList": [
+            318,
+            302,
+            301
+        ],
+        "PropertyList3": [
+            "CriticalChanceBase",
+            "CriticalDamageBase"
+        ],
+        "PropertyList4": [
+            "SpeedDelta"
+        ],
+        "PropertyList5": [
+            "ThunderAddedRatio"
+        ],
+        "PropertyList6": [
+            "SPRatioBase",
+            "AttackAddedRatio"
+        ],
+        "PropertyList": [
+            {
+                "$type": "RelicRecommendProperty",
+                "RelicType": "BODY",
+                "PropertyType": "CriticalChanceBase"
+            },
+            {
+                "$type": "RelicRecommendProperty",
+                "RelicType": "FOOT",
+                "PropertyType": "SpeedDelta"
+            },
+            {
+                "$type": "RelicRecommendProperty",
+                "RelicType": "NECK",
+                "PropertyType": "ThunderAddedRatio"
+            },
+            {
+                "$type": "RelicRecommendProperty",
+                "RelicType": "OBJECT",
+                "PropertyType": "SPRatioBase"
+            }
+        ],
+        "SubAffixPropertyList": [
+            "CriticalChanceBase",
+            "CriticalDamageBase",
+            "AttackAddedRatio",
+            "SpeedDelta"
+        ],
+        "ScoreRankList": [
+            346,
+            287
+        ]
+    }
+}

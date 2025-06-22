@@ -1,0 +1,262 @@
+{
+    "Name": "A Thankless Coronation",
+    "Desc": "The girl's ears rang in the fantasia with the words conversed on that day.\\n\\n<i>\"This sword wasn't hard to pull out at all, Merlin.\"</i>\\n<i>\"Indeed. Becoming the king everyone wishes for won't be hard for you at all, given that I'm guiding you. However, Artoria... The difficulty is that you can't always meet everyone's expectations.\"</i>\\n<i>\"They can choose a more fitting king by that time, then. I won't protest.\"</i>\\n<i>\"But what if such a person will never exist?\"</i>\\n<i>\"...Then I'll do my best to meet everyone's expectations.\"</i>\\n\\nNow, the girl had long since become aware of how profound that tragedy would be. Would she have chosen to give up if she were to return to that moment where everything began?\\n\\nThe king does not speak and simply grasps the sword tightly.\\nThe stone again gives out a thundering roar as the sword is pulled out.",
+    "Rarity": "CombatPowerLightconeRarity5",
+    "BaseType": "Warrior",
+    "Refinements": {
+        "Name": "King of Knights",
+        "Desc": "Increases the wearer's CRIT DMG by <color=#f29e38ff><unbreak>#1[i]%</unbreak></color>. Increases the wearer's ATK by <color=#f29e38ff><unbreak>#6[i]%</unbreak></color> when using Ultimate. If the wearer's Max Energy is greater than or equal to <unbreak>#3[i]</unbreak>, regenerates a fixed amount of Energy equal to <unbreak>#5[i]%</unbreak> of the wearer's Max Energy and increases their ATK by <color=#f29e38ff><unbreak>#2[i]%</unbreak></color>, lasting for <unbreak>#4[i]</unbreak> turns.",
+        "Level": {
+            "1": {
+                "ParamList": [
+                    0.3600000003352761,
+                    0.40000000037252903,
+                    300,
+                    2,
+                    0.10000000009313226,
+                    0.40000000037252903
+                ]
+            },
+            "2": {
+                "ParamList": [
+                    0.45000000041909516,
+                    0.5000000004656613,
+                    300,
+                    2,
+                    0.10000000009313226,
+                    0.5000000004656613
+                ]
+            },
+            "3": {
+                "ParamList": [
+                    0.5400000005029142,
+                    0.6000000005587935,
+                    300,
+                    2,
+                    0.10000000009313226,
+                    0.6000000005587935
+                ]
+            },
+            "4": {
+                "ParamList": [
+                    0.6300000005867332,
+                    0.7000000006519258,
+                    300,
+                    2,
+                    0.10000000009313226,
+                    0.7000000006519258
+                ]
+            },
+            "5": {
+                "ParamList": [
+                    0.7200000006705523,
+                    0.8000000007450581,
+                    300,
+                    2,
+                    0.10000000009313226,
+                    0.8000000007450581
+                ]
+            }
+        }
+    },
+    "Stats": [
+        {
+            "EquipmentID": 23045,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 5000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111011,
+                    "ItemNum": 8,
+                    "Rarity": "NotNormal"
+                }
+            ],
+            "PlayerLevelRequire": 15,
+            "MaxLevel": 20,
+            "BaseHP": 43.200000000186265,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 26.40000000037253,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 24,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 1,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 10000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110181,
+                    "ItemNum": 4,
+                    "Rarity": "NotNormal"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111011,
+                    "ItemNum": 12,
+                    "Rarity": "NotNormal"
+                }
+            ],
+            "WorldLevelRequire": 1,
+            "MaxLevel": 30,
+            "BaseHP": 95.04000000003725,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 58.080000000074506,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 52.80000000074506,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 2,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 20000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110182,
+                    "ItemNum": 4,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111012,
+                    "ItemNum": 8,
+                    "Rarity": "Rare"
+                }
+            ],
+            "WorldLevelRequire": 2,
+            "MaxLevel": 40,
+            "BaseHP": 164.160000000149,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 100.32000000029802,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 91.20000000018626,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 3,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 50000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110182,
+                    "ItemNum": 8,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111012,
+                    "ItemNum": 12,
+                    "Rarity": "Rare"
+                }
+            ],
+            "WorldLevelRequire": 3,
+            "MaxLevel": 50,
+            "BaseHP": 233.28000000026077,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 142.56000000052154,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 129.6000000005588,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 4,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 100000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110183,
+                    "ItemNum": 5,
+                    "Rarity": "VeryRare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111013,
+                    "ItemNum": 6,
+                    "Rarity": "VeryRare"
+                }
+            ],
+            "WorldLevelRequire": 4,
+            "MaxLevel": 60,
+            "BaseHP": 302.40000000037253,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 184.80000000074506,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 168,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 5,
+            "PromotionCostList": [
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 2,
+                    "ItemNum": 200000,
+                    "Rarity": "Rare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 110183,
+                    "ItemNum": 10,
+                    "Rarity": "VeryRare"
+                },
+                {
+                    "$type": "ItemConfigRow",
+                    "ItemID": 111013,
+                    "ItemNum": 8,
+                    "Rarity": "VeryRare"
+                }
+            ],
+            "WorldLevelRequire": 5,
+            "MaxLevel": 70,
+            "BaseHP": 371.5200000004843,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 227.04000000003725,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 206.40000000037253,
+            "BaseDefenceAdd": 3.6000000005587935
+        },
+        {
+            "EquipmentID": 23045,
+            "Promotion": 6,
+            "PromotionCostList": [],
+            "WorldLevelRequire": 5,
+            "MaxLevel": 80,
+            "BaseHP": 440.64000000059605,
+            "BaseHPAdd": 6.480000000447035,
+            "BaseAttack": 269.28000000026077,
+            "BaseAttackAdd": 3.9600000008940697,
+            "BaseDefence": 244.80000000074506,
+            "BaseDefenceAdd": 3.6000000005587935
+        }
+    ]
+}

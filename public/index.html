@@ -1,0 +1,3320 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chatbot Inteligente Configurable</title>
+    <style>
+        :root {
+            --max-message-width: 70%;
+            --max-message-width-mobile: 90%;
+            --chat-padding: 1rem;
+            --header-padding: 1rem;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        /* Estilos base responsivos */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--header-padding);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.5rem 0.75rem;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        /* Chat container responsivo */
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--chat-padding);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Mensajes responsivos */
+        .message {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.3s ease-in;
+            max-width: 100%;
+        }
+
+        .message-content {
+            max-width: var(--max-message-width);
+            background-color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            line-height: 1.6;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+
+        /* Avatar responsivo */
+        .avatar {
+            width: clamp(2rem, 5vw, 2.5rem);
+            height: clamp(2rem, 5vw, 2.5rem);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Iconos de personaje responsivos */
+        .character-icon {
+            width: clamp(40px, 10vw, 60px);
+            height: clamp(50px, 12vw, 75px);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            border: 2px solid #667eea;
+            object-fit: cover;
+        }
+
+        /* Versión más pequeña para inline */
+        .character-icon-small {
+            width: 32px;
+            height: 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin: 0 0.25rem;
+            vertical-align: middle;
+            border: 1px solid #667eea;
+            object-fit: cover;
+        }
+
+        /* Input container responsivo */
+        .input-container {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            padding: var(--chat-padding);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            outline: none;
+            transition: all 0.2s;
+            min-width: 0;
+        }
+
+        .send-btn {
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Sugerencias responsivas */
+        .suggestions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+
+        .suggestion-chip {
+            padding: 0.375rem 0.75rem;
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            font-size: clamp(0.7rem, 2vw, 0.75rem);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* Skills y secciones responsivas */
+        .skill-display {
+            background: linear-gradient(to right, #f3f4f6, #f9fafb);
+            border-radius: 0.75rem;
+            padding: clamp(0.75rem, 2vw, 1rem);
+            margin: 0.5rem 0;
+            border: 1px solid #e5e7eb;
+            overflow-x: auto;
+        }
+
+        .skill-display h4 {
+            color: #667eea;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
+            color: #6b7280;
+            flex-wrap: wrap;
+        }
+
+        .info-section {
+            background: #f9fafb;
+            border-left: 4px solid #667eea;
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+            margin: 0.75rem 0;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        /* Media queries para móvil */
+        @media (max-width: 768px) {
+            :root {
+                --max-message-width: var(--max-message-width-mobile);
+                --chat-padding: 0.75rem;
+                --header-padding: 0.75rem;
+            }
+
+            .header h1 {
+                font-size: 1.25rem;
+            }
+
+            .ai-badge {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .btn {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+
+            .btn span:last-child {
+                display: none; /* Ocultar flechas en móvil */
+            }
+
+            .message {
+                gap: 0.5rem;
+            }
+
+            .message-content {
+                padding: 0.625rem 0.875rem;
+                font-size: 0.9375rem;
+            }
+
+            .message.user .message-content {
+                margin-left: 2rem;
+            }
+
+            .message:not(.user) .message-content {
+                margin-right: 2rem;
+            }
+
+            .avatar {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+
+            .input-wrapper {
+                gap: 0.375rem;
+            }
+
+            #messageInput {
+                padding: 0.625rem 0.875rem;
+                font-size: 0.9375rem;
+            }
+
+            .send-btn {
+                padding: 0.625rem 0.875rem;
+            }
+
+            .suggestions {
+                gap: 0.375rem;
+            }
+
+            .suggestion-chip {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            .file-list {
+                font-size: 0.7rem;
+                max-height: 60px;
+            }
+
+            /* Ocultar texto en botones, solo iconos */
+            .controls .btn span:not(:first-child) {
+                display: none;
+            }
+
+            /* Modal responsivo */
+            .config-content {
+                margin: 1rem;
+                padding: 1.5rem;
+                max-width: calc(100vw - 2rem);
+                max-height: calc(100vh - 2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.1rem;
+            }
+
+            .controls {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 0.5rem 0.25rem;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .skill-display,
+            .info-section {
+                padding: 0.625rem;
+            }
+
+            .help-text {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Prevenir overflow horizontal */
+        body {
+            overflow-x: hidden;
+        }
+
+        * {
+            max-width: 100%;
+        }
+
+        /* Hacer que las imágenes sean responsivas */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Código responsivo */
+        .code-block {
+            font-size: clamp(0.75rem, 2vw, 0.875rem);
+            padding: 0.5rem;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        /* Listas responsivas */
+        .info-list {
+            padding-left: 1.25rem;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
+        /* Eidolones responsivos */
+        .eidolon-item {
+            padding: clamp(0.5rem, 2vw, 0.75rem);
+            font-size: clamp(0.875rem, 2vw, 1rem);
+        }
+
+        .info-badge {
+            font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+            padding: 0.2rem 0.5rem;
+        }
+
+        /* Scrollbar personalizado para móvil */
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 2px;
+            }
+        }
+
+        /* Fix para teclado virtual en móvil */
+        @media (max-height: 600px) {
+            .chat-container {
+                max-height: calc(100vh - 120px);
+            }
+        }
+
+        /* Prevenir zoom en input en iOS */
+        @media (max-width: 768px) {
+            input, textarea, select {
+                font-size: 16px !important;
+            }
+        }
+
+        /* ---- CSS ORIGINAL NO CAMBIADO, SOLO CLASES/REGLAS NO AFECTADAS ---- */
+        .ai-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        .btn-info {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .file-count {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .context-indicator {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        .file-list {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .bot-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .user-avatar {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.75rem 1rem;
+            background-color: white;
+            border-radius: 1rem;
+            border-bottom-left-radius: 0.25rem;
+            width: fit-content;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .typing-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #6b7280;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
+            30% { transform: translateY(-10px); opacity: 1; }
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        .success {
+            color: #10b981;
+        }
+
+        .loading {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .config-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .config-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .config-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .config-section h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .config-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            min-height: 100px;
+        }
+
+        .highlight {
+            background-color: #fef3c7;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+        }
+
+        .skill-card {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 80px; /* Espacio para el icono si lo añades después */
+        }
+
+        .skill-card h4 {
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-card p {
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .lightcone-section {
+            background: linear-gradient(to right, #f9fafb, #f3f4f6);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .lightcone-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .lightcone-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+
+        .lightcone-info {
+            flex: 1;
+        }
+
+        .lightcone-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .lightcone-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .refinement-desc {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .debug-info {
+            background: #f3f4f6;
+            border: 1px dashed #9ca3af;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            font-size: 0.75rem;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .eidolon-item {
+            display: flex;
+            gap: 1rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            align-items: flex-start;
+        }
+
+        .eidolon-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.5rem;
+            border: 2px solid #667eea;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .eidolon-content {
+            flex: 1;
+        }
+
+        .eidolon-content h5 {
+            color: #667eea;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .eidolon-values {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .eidolon-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .eidolon-icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>
+        🤖 Chatbot Inteligente Configurable
+        <span class="ai-badge">IA Avanzada</span>
+    </h1>
+    <div class="controls">
+        <button class="btn btn-primary" onclick="loadAllFiles()">
+            <span>🔄</span>
+            <span>Recargar</span>
+        </button>
+        <button class="btn btn-secondary" onclick="searchLightcones()">
+            <span>🌟</span>
+            <span>Conos</span>
+        </button>
+        <button class="btn btn-info" onclick="showConfig()">
+            <span>⚙️</span>
+            <span>Config</span>
+        </button>
+        <button class="btn btn-danger" onclick="clearAll()">
+            <span>🗑️</span>
+            <span>Limpiar</span>
+        </button>
+    </div>
+
+</div>
+
+<div class="chat-container" id="chatContainer">
+    <div class="message">
+<!--        <div class="avatar bot-avatar">🤖</div>-->
+<!--        <div class="message-content bot-message">-->
+<!--            ¡Hola! Soy tu asistente inteligente configurable para documentos JSON.-->
+
+<!--            Tengo capacidades mejoradas:-->
+<!--            • Memoria de contexto avanzada-->
+<!--            • Comprensión de sinónimos y variaciones-->
+<!--            • Sistema de configuración fácil de expandir-->
+<!--            • Detección automática de todos los archivos JSON en subcarpetas-->
+
+<!--            Estoy cargando los archivos automáticamente...-->
+<!--        </div>-->
+    </div>
+</div>
+
+<div class="input-container">
+    <div class="input-wrapper">
+        <input type="text" id="messageInput" placeholder="Pregúntame lo que quieras..."
+               onkeypress="if(event.key === 'Enter' && !event.shiftKey) sendMessage()">
+        <button class="send-btn" onclick="sendMessage()">
+            <span>Enviar</span>
+            <span>→</span>
+        </button>
+    </div>
+    <div class="suggestions">
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('¿Cuál es el ataque básico de Saber?')">
+            Ataque básico de Saber
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('¿Y cuál es su ultimate?')">
+            ¿Y su ultimate?
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('Muéstrame sus eidolones')">
+            Ver eidolones
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('¿Qué habilidades tienen los rastros?')">
+            Habilidades de rastros
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('Lista de personajes')">
+            Ver personajes
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('Muéstrame todos los conos de luz')">
+            Ver conos de luz
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('¿Cuál es el cono de Kafka?')">
+            Cono de Kafka
+        </div>
+        <div class="suggestion-chip" onclick="sendPredefinedMessage('Dame datos sobre Blade')">
+            Info de personaje
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Configuración -->
+<div class="config-modal" id="configModal">
+    <div class="config-content">
+        <h2>⚙️ Configuración del Chatbot</h2>
+        <div class="file-count">
+            <span id="statusText">Inicializando...</span>
+            <span class="loading" id="loadingIndicator">⏳</span>
+            <span class="context-indicator" id="contextIndicator" style="display: none;">
+                Contexto: <span id="contextCharacter"></span>
+            </span>
+        </div>
+        <div id="fileList" class="file-list" style="display: none;"></div>
+        <div class="config-section">
+            <h3>Sinónimos de Habilidades</h3>
+            <p>Un sinónimo por línea, formato: palabra_principal:sinónimo1,sinónimo2,sinónimo3</p>
+            <textarea class="config-input" id="skillSynonyms">
+skill:skill,habilidad,ability,poder,ataque,técnica,movimiento
+ultimate:ultimate,ult,ulti,definitiva,suprema,final,especial
+basic:básico,basico,básica,basica,normal,ataque básico,ataque basico,ataque normal,golpe básico,golpe normal
+enhanced:mejorado,enhanced,potenciado,especial
+talent:talento,talent,pasivo,pasiva,trait
+technique:técnica,tecnica,technique
+eidolon:eidolon,eidolón,dupe,duplicado,constelación,constelacion,rank,ranks
+traces:rastros,rastro,traces,trace,mejoras,árbol,arbol,skilltree,skilltrees
+lightcone:cono,conos,cone,light cone,lightcone,arma,armas,weapon,cono de luz
+</textarea>
+        </div>
+
+        <div class="config-section">
+            <h3>Asociaciones de Conos de Luz</h3>
+            <p>Formato: ID_del_cono:nombre_del_personaje</p>
+            <textarea class="config-input" id="lightconeAssociations">
+23006:kafka
+23007:blade
+23008:dan heng
+23009:jing yuan
+23010:bronya
+23011:seele
+23012:himeko
+23013:welt
+23014:bailu
+23015:yanqing
+23016:silver wolf
+23017:fu xuan
+23018:topaz
+23019:jingliu
+23020:luocha
+23021:huohuo
+23022:argenti
+23023:ruan mei
+23024:dr ratio
+23025:black swan
+23026:sparkle
+23027:aventurine
+23028:acheron
+23029:robin
+23030:boothill
+23031:firefly
+23032:jade
+23033:yunli
+23034:jiaoqiu
+23035:feixiao
+23036:lingsha
+23037:rappa
+23038:sunday
+23039:fugue
+23040:the herta
+23041:aglaea
+</textarea>
+        </div>
+
+        <div class="config-section">
+            <h3>Campos JSON Personalizados</h3>
+            <p>Define cómo buscar en tu estructura JSON específica</p>
+            <textarea class="config-input" id="jsonFields">
+character_name:Name,CharacterName,Hero,nombre
+character_desc:Desc,Description,descripcion,info
+skills_container:Skills,Abilities,Habilidades,powers
+skill_name:Name,SkillName,nombre
+skill_desc:Desc,Description,descripcion
+skill_type:Type,SkillType,tipo
+skill_cost:SPBase,Cost,SPNeed,costo,sp
+ultimate_type:Ultra,Ultimate,Special
+stats:Stats,Estadisticas,statistics
+rarity:Rarity,Rareza,Stars
+</textarea>
+        </div>
+
+        <button class="btn btn-primary" onclick="saveConfig()">Guardar Configuración</button>
+        <button class="btn btn-secondary" onclick="closeConfig()">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    // ========== CONFIGURACIÓN EXPANDIBLE ==========
+    const CONFIG = {
+        // Sinónimos y variaciones
+        synonyms: {
+            skill: ['skill', 'habilidad', 'ability', 'poder', 'ataque', 'técnica', 'movimiento'],
+            ultimate: ['ultimate', 'ult', 'ulti', 'definitiva', 'suprema', 'final', 'especial', '101403'],
+            basic: ['básico', 'basico', 'básica', 'basica', 'normal', 'ataque básico', 'ataque basico', '101401', 'ataque normal', 'golpe básico', 'golpe normal'],
+            enhanced: ['mejorado', 'enhanced', 'potenciado', 'especial', '101408'],
+            talent: ['talento', 'talent', 'pasivo', 'pasiva', 'trait', '101404'],
+            technique: ['técnica', 'tecnica', 'technique', '101407'],
+            eidolon: ['eidolon', 'eidolón', 'dupe', 'duplicado', 'constelación', 'constelacion', 'rank', 'ranks'],
+            traces: ['rastros', 'rastro', 'traces', 'trace', 'mejoras', 'árbol', 'arbol', 'skilltree', 'skilltrees'],
+            description: ['descripción', 'descripcion', 'description', 'desc', 'info', 'información', 'detalles', 'historia', 'lore'],
+            damage: ['daño', 'damage', 'dmg', 'ataque', 'poder', 'fuerza'],
+            character: ['personaje', 'character', 'char', 'héroe', 'heroe', 'pj', 'unidad'],
+            list: ['lista', 'list', 'todos', 'todas', 'listar', 'mostrar', 'ver', 'enseñar', 'dime'],
+            stats: ['stats', 'estadísticas', 'estadisticas', 'números', 'numeros', 'valores', 'atributos'],
+            type: ['tipo', 'type', 'clase', 'categoría', 'categoria', 'elemento'],
+            rarity: ['rareza', 'rarity', 'estrellas', 'calidad', 'tier'],
+            cost: ['costo', 'cost', 'precio', 'sp', 'energia', 'energía', 'mana'],
+            lightcone: ['cono', 'conos', 'cone', 'light cone', 'lightcone', 'arma', 'armas', 'weapon', 'cono de luz']
+        },
+
+        lightconeAssociations: {
+            '23006': 'kafka',
+            '23007': 'silver wolf',
+            '23008': 'luocha',
+            '23009': 'blade',
+            '23010': 'jing yuan',
+            '23011': 'fu xuan',
+            '23012': 'yanqing',
+            '23013': 'bailu',
+            '23014': 'jing liu',
+            '23015': 'Dan Heng • Imbibitor Lunae',
+            '23016': 'topaz',
+            '23017': 'huo huo',
+            '23018': 'argenti',
+            '23019': 'ruan mei',
+            '23020': 'dr ratio',
+            '23021': 'sparkle',
+            '23022': 'black swann',
+            '23023': 'aventurine',
+            '23024': 'acheron',
+            '23025': 'firefly',
+            '23026': 'robin',
+            '23027': 'boothill',
+            '23028': 'jade',
+            '23029': 'jiaoqiu',
+            '23030': 'yunli',
+            '23031': 'feixiao',
+            '23032': 'lingsha',
+            '23033': 'rappa',
+            '23034': 'sunday',
+            '23035': 'fugue',
+            '23036': 'aglaea',
+            '23037': 'herta',
+            '23038': 'tribbie',
+            '23039': 'mydei',
+            '23040': 'castorice',
+            '23041': 'anaxa',
+            '23042': 'hyacine',
+            '23043': 'cipher',
+            '23044': 'phainon',
+            '23045': 'saber',
+            '23046': 'archer'
+        },
+
+        // IDs específicos de habilidades
+        skillPatterns: {
+            basic: '01',
+            skill: '02',
+            ultimate: '03',
+            talent: '04',
+            technique: '07',
+            enhancedBasic: '08'
+        },
+
+        // Campos JSON
+        jsonFields: {
+            characterName: ['Name', 'CharacterName', 'Hero', 'nombre', 'name'],
+            characterDesc: ['Desc', 'Description', 'descripcion', 'info', 'Lore'],
+            skillsContainer: ['Skills', 'Abilities', 'Habilidades', 'powers', 'SkillList'],
+            skillName: ['Name', 'SkillName', 'nombre', 'Title'],
+            skillDesc: ['Desc', 'Description', 'descripcion', 'Effect'],
+            skillType: ['Type', 'SkillType', 'tipo', 'Category'],
+            skillCost: ['SPBase', 'Cost', 'SPNeed', 'costo', 'sp', 'EnergyCost'],
+            ultimateType: ['Ultra', 'Ultimate', 'Special', 'Super'],
+            statsContainer: ['Stats', 'Estadisticas', 'statistics', 'Attributes'],
+            rarity: ['Rarity', 'Rareza', 'Stars', 'Tier'],
+            damageType: ['DamageType', 'Element', 'Elemento', 'Type'],
+            baseType: ['BaseType', 'Class', 'Clase', 'Role'],
+            ranksContainer: ['Ranks', 'Eidolons', 'Dupes', 'Constelaciones'],
+            skillTreesContainer: ['SkillTrees', 'Traces', 'Rastros', 'Tree'],
+            tracePointName: ['PointName'],
+            tracePointDesc: ['PointDesc'],
+            traceStatusList: ['StatusAddList'],
+            charaInfo: ['CharaInfo'],
+            refinements: ['Refinements', 'Refinamiento', 'Refine'],
+            lightconeName: ['Name', 'LightconeName', 'WeaponName'],
+            lightconeDesc: ['Desc', 'Description', 'WeaponDesc']
+        },
+
+        valueMappings: {
+            rarity: {
+                'CombatPowerAvatarRarityType3': '3 estrellas',
+                'CombatPowerAvatarRarityType4': '4 estrellas',
+                'CombatPowerAvatarRarityType5': '5 estrellas',
+                'CombatPowerLightconeRarity3': '3 estrellas',
+                'CombatPowerLightconeRarity4': '4 estrellas',
+                'CombatPowerLightconeRarity5': '5 estrellas'
+            },
+            baseType: {
+                'Warrior': 'Destruction',
+                'Knight': 'Preservation',
+                'Mage': 'Erudition',
+                'Shaman': 'Harmony',
+                'Warlock': 'Nihility',
+                'Priest': 'Abundance',
+                'Rogue': 'Hunt'
+            },
+            damageType: {
+                'Fire': 'Fuego',
+                'Ice': 'Hielo',
+                'Wind': 'Viento',
+                'Thunder': 'Rayo',
+                'Quantum': 'Cuántico',
+                'Imaginary': 'Imaginario',
+                'Physical': 'Físico'
+            }
+        },
+
+        contextWords: {
+            reference: ['su', 'sus', 'el', 'la', 'este', 'esta', 'ese', 'esa', 'mismo', 'misma'],
+            continuation: ['y', 'también', 'tambien', 'además', 'ademas', 'otra', 'otro', 'más', 'mas'],
+            comparison: ['mejor', 'peor', 'más fuerte', 'mas fuerte', 'más débil', 'mas debil'],
+            changeCharacter: ['y el de', 'y la de', 'y para', 'qué hay de', 'que hay de', 'y de']
+        },
+
+        searchPatterns: [
+            { pattern: /(ataque\s*b[áa]sico|b[áa]sico|basic\s*attack|basic|normal|101401|ataque\s*normal)/i, action: 'basic_attack' },
+            { pattern: /(skill|habilidad\s*principal|101402)/i, action: 'main_skill' },
+            { pattern: /(ultimate|ulti|definitiva|suprema|101403)/i, action: 'ultimate' },
+            { pattern: /(talento|talent|pasiv[ao]|101404)/i, action: 'talent' },
+            { pattern: /(t[ée]cnica|technique|101407)/i, action: 'technique' },
+            { pattern: /(ataque\s*b[áa]sico\s*mejorado|enhanced\s*basic|101408)/i, action: 'enhanced_basic' },
+            { pattern: /(todas?\s*(las)?\s*(sus)?\s*(skills?|habilidades?)|lista\s*de\s*(skills?|habilidades?)|mu[ée]strame\s*(todas?\s*)?(sus|las)?\s*(skills?|habilidades?))/i, action: 'all_skills' },
+            { pattern: /(eidol[óo]n|eidolons?|dupes?|duplicados?|constelaci[óo]n|ranks?)/i, action: 'eidolons' },
+            { pattern: /(rastros?|traces?|mejoras|[áa]rbol\s*de\s*habilidades?|skill\s*tree)/i, action: 'traces' },
+            { pattern: /(cono|conos|light\s*cone|arma|weapon)\s*(de|del|para)?\s*(.+)?/i, action: 'lightcone_info' },
+            { pattern: /(todos?\s*los?\s*conos?|lista\s*de\s*conos?|mu[ée]strame\s*los?\s*conos?)/i, action: 'all_lightcones' },
+            { pattern: /(refinamiento|refinement|r[1-5])\s*(de|del)?\s*(.+)?/i, action: 'lightcone_refinement' },
+            { pattern: /(datos?\s*(sobre|de)|informaci[óo]n\s*(sobre|de|del)|info\s*(de|del)|detalles?\s*(de|del)|todo\s*sobre)/i, action: 'character_info' },
+            { pattern: /(lista|mostrar|ver|todos?)\s*(los)?\s*(personajes?|characters?|h[ée]roes?)/i, action: 'list_characters' }
+        ]
+    };
+
+    // Estado del chatbot
+    const chatbotState = {
+        documents: {},
+        conversationContext: {
+            currentCharacter: null,
+            currentTopic: null,
+            lastQuestion: null,
+            lastResults: null,
+            lastIntent: null,
+            conversationHistory: [],
+            entities: new Set()
+        },
+        messageId: 1,
+        config: CONFIG
+    };
+
+    // Cargar configuración guardada
+    function loadSavedConfig() {
+        const saved = localStorage.getItem('chatbotConfig');
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                Object.assign(chatbotState.config, parsed);
+            } catch (e) {
+                console.log('Using default config');
+            }
+        }
+    }
+
+    // Inicializar
+    window.addEventListener('load', () => {
+        loadSavedConfig();
+        initializeChatbot();
+    });
+
+    function isMobile() {
+        return window.innerWidth <= 768 || 'ontouchstart' in window;
+    }
+
+    async function initializeChatbot() {
+        await loadAllFiles();
+        document.getElementById('messageInput').focus();
+    }
+
+    // Función para verificar si un documento es un cono de luz
+    function isLightcone(doc) {
+        const actualDoc = doc.data || doc;
+        return actualDoc.Refinements ||
+            (actualDoc.Rarity && actualDoc.Rarity.includes('Lightcone')) ||
+            (doc.folder && (doc.folder.toLowerCase().includes('lightcone') ||
+                doc.folder.toLowerCase().includes('cono')));
+    }
+
+    // Función actualizada para cargar archivos desde el servidor
+    async function loadAllFiles() {
+        const statusText = document.getElementById('statusText');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        statusText.textContent = 'Buscando todos los archivos JSON...';
+        loadingIndicator.style.display = 'inline-block';
+
+        try {
+            const response = await fetch('/api/files');
+            if (!response.ok) throw new Error('Error al obtener archivos');
+
+            const files = await response.json();
+            console.log(`Servidor encontró ${files.length} archivos`);
+
+            let loadedCount = 0;
+            let errorCount = 0;
+            const loadedFiles = [];
+
+            for (const fileInfo of files) {
+                try {
+                    const jsonResponse = await fetch(fileInfo.path);
+                    if (!jsonResponse.ok) throw new Error(`HTTP ${jsonResponse.status}`);
+
+                    const jsonData = await jsonResponse.json();
+
+                    // Guardar con información de carpeta
+                    chatbotState.documents[fileInfo.name] = {
+                        data: jsonData,
+                        folder: fileInfo.folder,
+                        fullPath: fileInfo.path
+                    };
+
+                    loadedFiles.push(fileInfo.name);
+                    extractEntities(jsonData);
+                    loadedCount++;
+
+                } catch (error) {
+                    console.error(`Error al cargar ${fileInfo.name}:`, error);
+                    errorCount++;
+                }
+            }
+
+            document.getElementById('loadingIndicator').style.display = 'none';
+            updateFileCount();
+            showFileList(loadedFiles);
+
+            let message = `✅ ${loadedCount} archivo(s) cargado(s) exitosamente`;
+            if (errorCount > 0) {
+                message += `\n❌ ${errorCount} archivo(s) con errores`;
+            }
+
+            addMessage(message, 'bot');
+
+            // Mostrar información sobre personajes y conos
+            setTimeout(() => {
+                const characters = getAvailableCharacters();
+                const lightcones = getAvailableLightcones();
+
+                let infoMessage = '';
+                if (characters.length > 0) {
+                    infoMessage += `📊 Tengo información sobre ${characters.length} personajes\n`;
+                }
+                if (lightcones.length > 0) {
+                    infoMessage += `🌟 Y ${lightcones.length} conos de luz\n\n`;
+                }
+                infoMessage += `Pregúntame lo que quieras saber! 🎮`;
+
+                addMessage(infoMessage, 'bot');
+            }, 1000);
+
+        } catch (error) {
+            console.error('Error:', error);
+            statusText.textContent = 'Error al cargar archivos';
+            loadingIndicator.style.display = 'none';
+            addMessage('❌ Error al conectar con el servidor. Asegúrate de que esté corriendo.', 'bot');
+        }
+    }
+
+    // Función para buscar específicamente conos de luz
+    async function searchLightcones() {
+        showTypingIndicator();
+
+        try {
+            const response = await fetch('/api/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: '', type: 'lightcone' })
+            });
+
+            if (!response.ok) throw new Error('Error en búsqueda');
+
+            const results = await response.json();
+            hideTypingIndicator();
+
+            if (results.length > 0) {
+                let message = `🌟 **Encontré ${results.length} conos de luz:**\n\n`;
+
+                // Agrupar por rareza
+                const grouped = {};
+                results.forEach(result => {
+                    const rarity = result.data.Rarity || 'Sin rareza';
+                    if (!grouped[rarity]) grouped[rarity] = [];
+                    grouped[rarity].push(result);
+                });
+
+                // Mostrar agrupados
+                Object.entries(grouped).forEach(([rarity, items]) => {
+                    message += `**${formatRarity(rarity)}:**\n`;
+                    items.forEach(item => {
+                        const name = item.data.Name || 'Sin nombre';
+                        const baseType = formatBaseType(item.data.BaseType);
+                        message += `• ${name} (${baseType})\n`;
+                    });
+                    message += '\n';
+                });
+
+                addMessage(message, 'bot');
+            } else {
+                addMessage('No encontré conos de luz en los archivos cargados.', 'bot');
+            }
+        } catch (error) {
+            hideTypingIndicator();
+            addMessage('Error al buscar conos de luz.', 'bot');
+        }
+    }
+
+    // Función para obtener conos disponibles
+    function getAvailableLightcones() {
+        const lightcones = [];
+        for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+            if (isLightcone(docWrapper)) {
+                const doc = docWrapper.data || docWrapper;
+                if (doc.Name) {
+                    lightcones.push({
+                        name: doc.Name,
+                        rarity: doc.Rarity,
+                        baseType: doc.BaseType,
+                        filename: filename
+                    });
+                }
+            }
+        }
+        return lightcones;
+    }
+
+    // Función para formatear rareza
+    function formatRarity(rarity) {
+        if (chatbotState.config.valueMappings.rarity[rarity]) {
+            return chatbotState.config.valueMappings.rarity[rarity];
+        }
+        if (rarity && rarity.includes('Rarity')) {
+            const match = rarity.match(/Rarity(\d+)/);
+            if (match) return `${match[1]} estrellas`;
+        }
+        return rarity;
+    }
+
+    // Función para formatear tipo base
+    function formatBaseType(baseType) {
+        if (chatbotState.config.valueMappings.baseType[baseType]) {
+            return chatbotState.config.valueMappings.baseType[baseType];
+        }
+        return baseType || 'Desconocido';
+    }
+
+    // Extraer entidades del JSON
+    function extractEntities(jsonData) {
+        // Buscar nombre del personaje
+        for (const field of chatbotState.config.jsonFields.characterName) {
+            if (jsonData[field]) {
+                chatbotState.conversationContext.entities.add(jsonData[field].toLowerCase());
+                break;
+            }
+        }
+
+        // Si es un cono de luz, agregar su nombre
+        if (jsonData.Refinements) {
+            for (const field of chatbotState.config.jsonFields.lightconeName) {
+                if (jsonData[field]) {
+                    chatbotState.conversationContext.entities.add(jsonData[field].toLowerCase());
+                    break;
+                }
+            }
+        }
+
+        // Extraer nombres de habilidades
+        for (const skillField of chatbotState.config.jsonFields.skillsContainer) {
+            if (jsonData[skillField]) {
+                const skills = jsonData[skillField];
+                Object.values(skills).forEach(skill => {
+                    for (const nameField of chatbotState.config.jsonFields.skillName) {
+                        if (skill[nameField]) {
+                            chatbotState.conversationContext.entities.add(skill[nameField].toLowerCase());
+                            break;
+                        }
+                    }
+                });
+                break;
+            }
+        }
+        // Si es un artefacto, agregar su nombre
+        if (jsonData.Parts && jsonData.RequireNum && jsonData.Name) {
+            chatbotState.conversationContext.entities.add(jsonData.Name.toLowerCase());
+        }
+
+        // Si es un item, agregar su nombre
+        if (jsonData.ItemName && jsonData.ItemMainType) {
+            chatbotState.conversationContext.entities.add(jsonData.ItemName.toLowerCase());
+        }
+    }
+
+    // Mostrar lista de archivos cargados
+    function showFileList(files) {
+        const fileList = document.getElementById('fileList');
+        if (files.length > 0) {
+            fileList.style.display = 'block';
+
+            // Agrupar por carpeta
+            const grouped = {};
+            files.forEach(file => {
+                const docWrapper = chatbotState.documents[file];
+                const folder = docWrapper.folder || 'Raíz';
+                if (!grouped[folder]) grouped[folder] = [];
+                grouped[folder].push(file);
+            });
+
+            let html = '<strong>Archivos cargados:</strong><br>';
+            Object.entries(grouped).forEach(([folder, fileList]) => {
+                html += `📁 ${folder}: ${fileList.length} archivos<br>`;
+            });
+
+            fileList.innerHTML = html;
+        } else {
+            fileList.style.display = 'none';
+        }
+    }
+
+    // Obtener personajes disponibles
+    function getAvailableCharacters() {
+        const characters = [];
+        for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+            const doc = docWrapper.data || docWrapper;
+
+            // Verificar que no sea un cono de luz
+            if (!isLightcone(docWrapper)) {
+                for (const field of chatbotState.config.jsonFields.characterName) {
+                    if (doc[field]) {
+                        characters.push(doc[field]);
+                        break;
+                    }
+                }
+            }
+        }
+        return [...new Set(characters)];
+    }
+
+    // Actualizar contador
+    function updateFileCount() {
+        const count = Object.keys(chatbotState.documents).length;
+        const statusText = document.getElementById('statusText');
+
+        if (count > 0) {
+            const characters = getAvailableCharacters().length;
+            const lightcones = getAvailableLightcones().length;
+            const artifacts = getAvailableArtifacts().length;
+            const items = getAvailableItems().length;
+
+            statusText.textContent = `📁 ${count} archivos (${characters} personajes, ${lightcones} conos, ${artifacts} artefactos, ${items} items)`;
+        } else {
+            statusText.textContent = 'Sin documentos cargados';
+        }
+    }
+
+    // Añadir estas funciones auxiliares
+    function getAvailableArtifacts() {
+        const artifacts = [];
+        for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+            if (isArtifact(docWrapper)) {
+                const doc = docWrapper.data || docWrapper;
+                if (doc.Name) artifacts.push(doc.Name);
+            }
+        }
+        return artifacts;
+    }
+
+    function getAvailableItems() {
+        const items = [];
+        for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+            if (isItem(docWrapper)) {
+                const doc = docWrapper.data || docWrapper;
+                if (doc.ItemName) items.push(doc.ItemName);
+            }
+        }
+        return items;
+    }
+
+    // Actualizar indicador de contexto
+    function updateContextIndicator() {
+        const contextIndicator = document.getElementById('contextIndicator');
+        const contextCharacter = document.getElementById('contextCharacter');
+
+        if (chatbotState.conversationContext.currentCharacter) {
+            contextIndicator.style.display = 'inline-block';
+            contextCharacter.textContent = chatbotState.conversationContext.currentCharacter;
+        } else {
+            contextIndicator.style.display = 'none';
+        }
+    }
+
+    // Agregar mensaje al chat
+    function addMessage(text, sender) {
+        const chatContainer = document.getElementById('chatContainer');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = `avatar ${sender}-avatar`;
+        avatarDiv.textContent = sender === 'bot' ? '🤖' : '👤';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = `message-content ${sender}-message`;
+        contentDiv.innerHTML = formatMessage(text);
+
+        if (sender === 'user') {
+            messageDiv.appendChild(contentDiv);
+            messageDiv.appendChild(avatarDiv);
+        } else {
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
+        }
+
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Formatear mensaje
+    function formatMessage(text) {
+        // Procesar imágenes
+        text = text.replace(/\[IMG:(.*?)\]/g, (match, src) => {
+            return `<img src="${src}" alt="Character Icon" class="character-icon">`;
+        });
+
+        // Formatear secciones de conos de luz especialmente
+        text = text.replace(/\[LIGHTCONE:(.*?)\|(.*?)\|(.*?)\]/g, (match, name, rarity, path) => {
+            return `<div class="lightcone-section">
+                    <div class="lightcone-header">
+                        <div class="lightcone-info">
+                            <div class="lightcone-name">${name}</div>
+                            <div class="lightcone-stats">
+                                <span>⭐ ${rarity}</span>
+                                <span>🛡️ ${path}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        // Secciones de información
+        text = text.replace(/\*\*📊 (.+?)\*\*/g, '<div class="info-header">📊 $1</div>');
+        text = text.replace(/\*\*📖 (.+?):\*\*/g, '<div class="info-header">📖 $1:</div>');
+        text = text.replace(/\*\*🌟 (.+?)\*\*/g, '<div class="info-header">🌟 $1</div>');
+        text = text.replace(/\*\*✨ (.+?):\*\*/g, '<div class="info-header">✨ $1:</div>');
+
+        // Skills formateadas
+        text = text.replace(/\[SKILL:(.*?)\|(.*?)\]/g, (match, name, desc) => {
+            return `<div class="skill-display">
+                    <h4>${name}</h4>
+                    <div class="skill-desc">${desc}</div>
+                </div>`;
+        });
+
+        // Valores destacados
+        text = text.replace(/\*\*(\d+%?)\*\*/g, '<span class="highlight-value">$1</span>');
+
+        // Negritas generales
+        text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+        // Resaltados
+        text = text.replace(/__(.*?)__/g, '<span class="highlight">$1</span>');
+
+        // Separadores
+        text = text.replace(/---/g, '<div class="section-divider"></div>');
+
+        // Saltos de línea
+        text = text.replace(/\n/g, '<br>');
+
+        // Listas con bullets
+        text = text.replace(/• (.+?)(<br>|$)/g, '<li>$1</li>');
+        text = text.replace(/(<li>.*<\/li>)/s, '<ul class="info-list">$1</ul>');
+
+        // Código
+        text = text.replace(/```([\s\S]*?)```/g, '<div class="code-block">$1</div>');
+
+        return text;
+    }
+
+    // Indicador de escritura
+    function showTypingIndicator() {
+        const chatContainer = document.getElementById('chatContainer');
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message';
+        typingDiv.id = 'typingIndicator';
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'avatar bot-avatar';
+        avatarDiv.textContent = '🤖';
+
+        const indicatorDiv = document.createElement('div');
+        indicatorDiv.className = 'typing-indicator';
+        indicatorDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+        typingDiv.appendChild(avatarDiv);
+        typingDiv.appendChild(indicatorDiv);
+        chatContainer.appendChild(typingDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.remove();
+    }
+
+    // Normalizar texto
+    function normalizeText(text) {
+        return text.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^\w\s]/g, ' ')
+            .trim();
+    }
+
+    // Función para verificar si es un artefacto
+    function isArtifact(doc) {
+        const actualDoc = doc.data || doc;
+        return actualDoc.Parts && actualDoc.RequireNum &&
+            (doc.folder && doc.folder.toLowerCase().includes('artefacto'));
+    }
+
+    // Función para verificar si es un item
+    function isItem(doc) {
+        const actualDoc = doc.data || doc;
+        return actualDoc.ItemMainType && actualDoc.ItemSubType &&
+            (doc.folder && doc.folder.toLowerCase().includes('item'));
+    }
+
+    // Función para formatear rareza de items
+    function formatItemRarity(rarity) {
+        const rarityMap = {
+            'SuperRare': '5⭐',
+            'VeryRare': '4⭐',
+            'Rare': '3⭐',
+            'NotNormal': '2⭐',
+            'Normal': '1⭐'
+        };
+        return rarityMap[rarity] || rarity;
+    }
+
+    // Detectar intención
+    function detectIntent(query) {
+        const normalized = normalizeText(query);
+        const words = normalized.split(/\s+/);
+
+        const intent = {
+            action: null,
+            target: null,
+            character: null,
+            position: null,
+            isContextual: false,
+            isChangeCharacter: false,
+            confidence: 0,
+            details: {}
+        };
+
+        // NUEVO: Detectar preguntas directas con personaje
+        const directPatterns = [
+            {
+                pattern: /(?:dame|muestrame|cuales son|quiero ver)\s+(?:los|las)?\s*(eidolones?|rastros?|habilidades?|skills?)\s+(?:de|del)\s+(\w+)/i,
+                type: 'direct_with_character'
+            },
+            {
+                pattern: /(?:eidolones?|rastros?|habilidades?)\s+(?:de|del)\s+(\w+)/i,
+                type: 'direct_with_character'
+            },
+            {
+                pattern: /(?:los|las)\s*(eidolones?|rastros?|habilidades?)\s+(?:de|del)\s+(\w+)/i,
+                type: 'direct_with_character'
+            }
+        ];
+
+        for (const {pattern, type} of directPatterns) {
+            const match = query.match(pattern);
+            if (match) {
+                // Detectar la acción
+                if (match[0].includes('eidolon')) {
+                    intent.action = 'eidolons';
+                } else if (match[0].includes('rastro')) {
+                    intent.action = 'traces';
+                } else if (match[0].includes('habilidad') || match[0].includes('skill')) {
+                    intent.action = 'all_skills';
+                }
+
+                // Detectar el personaje - puede estar en match[1] o match[2]
+                const charName = match[2] || match[1];
+                if (charName) {
+                    const possibleChar = charName.toLowerCase();
+                    for (const entity of chatbotState.conversationContext.entities) {
+                        if (entity.includes(possibleChar) || possibleChar.includes(entity)) {
+                            intent.character = entity;
+                            intent.confidence += 0.6;
+                            break;
+                        }
+                    }
+                }
+
+                if (intent.action && intent.character) {
+                    return intent; // Retornar temprano si encontramos todo
+                }
+            }
+        }
+
+        // PRIMERO: Detectar patrones especiales como "la de X" que implican cambio de personaje
+        const specialChangePatterns = [
+            /^(la|el|los|las)\s+(de|del)\s+(\w+)$/i,  // "la de kafka"
+            /^y\s+(la|el|los|las)\s+(de|del)\s+(\w+)/i,  // "y la de kafka"
+        ];
+
+        for (const pattern of specialChangePatterns) {
+            const match = query.match(pattern);
+            if (match) {
+                intent.isChangeCharacter = true;
+                // Heredar la última acción si existe
+                if (chatbotState.conversationContext.lastIntent) {
+                    intent.action = chatbotState.conversationContext.lastIntent.action;
+                }
+
+                const charName = match[3];
+                if (charName) {
+                    const possibleChar = charName.toLowerCase();
+                    for (const entity of chatbotState.conversationContext.entities) {
+                        if (entity.includes(possibleChar) || possibleChar.includes(entity)) {
+                            intent.character = entity;
+                            intent.confidence += 0.5;
+                            break;
+                        }
+                    }
+                }
+                return intent; // Retornar temprano si es este patrón
+            }
+        }
+
+        // SEGUNDO: Otros patrones de cambio de personaje
+        const changeCharacterPatterns = [
+            /^y\s+(los?|las?)\s*(de|del)\s+(\w+)/i,  // "y los de kafka"
+            /^y\s*(\w+)\s*\?$/i,  // "y kafka?"
+            /^ahora\s+(los?|las?)\s*(de|del)\s+(\w+)/i,  // "ahora los de kafka"
+            /^para\s+(\w+)/i,  // "para kafka"
+            /^de\s+(\w+)$/i,  // "de kafka"
+        ];
+
+        for (const pattern of changeCharacterPatterns) {
+            const match = query.match(pattern);
+            if (match) {
+                intent.isChangeCharacter = true;
+                const charName = match[3] || match[1];
+                if (charName) {
+                    const possibleChar = charName.toLowerCase();
+                    for (const entity of chatbotState.conversationContext.entities) {
+                        if (entity.includes(possibleChar) || possibleChar.includes(entity)) {
+                            intent.character = entity;
+                            intent.confidence += 0.4;
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+
+        // TERCERO: Detectar si es una pregunta contextual (sin cambio de personaje)
+        if (!intent.isChangeCharacter) {
+            const contextualPatterns = [
+                /^y\s+(su|sus|el|la|los|las|cual|cuales)\s+/i,  // "y su ulti"
+                /^y\s+la\s+(\w+)$/i,  // "y la ulti"
+                /^y\s+el\s+(\w+)$/i,  // "y el talento"
+                /^tambien\s*/i,
+                /^ademas\s*/i,
+                /^muestrame\s+(su|sus|los|las)\s*/i,
+                /^dame\s+(su|sus|los|las)\s*/i,
+                /^cuales\s+son\s+(sus|los|las)\s*/i,
+                /^(rastros?|eidolons?|habilidades?)$/i,  // Solo "rastros", "eidolons", etc.
+                /^(la|el|los|las)\s+(ulti|skill|talento|basico)$/i,  // "la ulti", "el talento"
+                /^los\s+rastros?$/i,  // "los rastros"
+                /^las\s+habilidades?$/i,  // "las habilidades"
+            ];
+
+            for (const pattern of contextualPatterns) {
+                if (query.match(pattern)) {
+                    intent.isContextual = true;
+                    intent.confidence += 0.3;
+                    break;
+                }
+            }
+        }
+
+        // CUARTO: Detectar acción basada en palabras clave
+        const actionPatterns = [
+            // Eidolones
+            { pattern: /(eidol[óo]n|eidolons?|dupes?|duplicados?|constelaci[óo]n|ranks?)/i, action: 'eidolons' },
+
+            // Rastros/Traces
+            { pattern: /(rastros?|traces?|mejoras|[áa]rbol\s*de\s*habilidades?|skill\s*tree)/i, action: 'traces' },
+
+            // Skills específicas
+            { pattern: /(la\s+ulti|ultimate|ulti|definitiva)/i, action: 'ultimate' },
+            { pattern: /(la\s+skill|skill|habilidad\s*principal)/i, action: 'main_skill' },
+            { pattern: /(el\s+talento|talento|talent|pasiv[ao])/i, action: 'talent' },
+            { pattern: /(el\s+b[áa]sico|ataque\s*b[áa]sico|b[áa]sico|basic)/i, action: 'basic_attack' },
+            { pattern: /(la\s+t[ée]cnica|t[ée]cnica|technique)/i, action: 'technique' },
+            { pattern: /(todas?\s*(las)?\s*(sus)?\s*(skills?|habilidades?)|habilidades)/i, action: 'all_skills' },
+
+            { pattern: /(artefacto|artifact|set|reliquia|relic)\s*(de|del)?\s*(.+)?/i, action: 'artifact_info' },
+            { pattern: /(item|objeto|material)\s*(de|del)?\s*(.+)?/i, action: 'item_info' },
+            { pattern: /(todos?\s*los?\s*artefactos?|lista\s*de\s*artefactos?)/i, action: 'all_artifacts' },
+            { pattern: /(todos?\s*los?\s*items?|lista\s*de\s*items?)/i, action: 'all_items' },
+            // Conos
+            { pattern: /(cono|conos|light\s*cone|arma|weapon)/i, action: 'lightcone_info' },
+
+            // Info general
+            { pattern: /(datos?\s*(sobre|de)|informaci[óo]n|info|detalles?)/i, action: 'character_info' }
+        ];
+
+        // Solo buscar acción si no la heredamos de un patrón especial
+        if (!intent.action) {
+            for (const patternObj of actionPatterns) {
+                if (query.match(patternObj.pattern)) {
+                    intent.action = patternObj.action;
+                    intent.confidence += 0.3;
+                    break;
+                }
+            }
+        }
+
+        // QUINTO: Si no encontramos personaje y no es contextual, buscar en toda la query
+        if (!intent.character && !intent.isContextual) {
+            // Buscar personaje mencionado en cualquier parte
+            for (const entity of chatbotState.conversationContext.entities) {
+                if (normalized.includes(entity)) {
+                    intent.character = entity;
+                    intent.confidence += 0.3;
+                    break;
+                }
+            }
+
+            // Buscar patrón "X de Y" donde Y es el personaje
+            const ofPattern = /(?:^|\s)(?:\w+\s+)?(?:de|del)\s+(\w+)(?:\s|$)/i;
+            const ofMatch = query.match(ofPattern);
+            if (ofMatch && ofMatch[1] && !intent.character) {
+                const possibleChar = ofMatch[1].toLowerCase();
+                for (const entity of chatbotState.conversationContext.entities) {
+                    if (entity.includes(possibleChar) || possibleChar.includes(entity)) {
+                        intent.character = entity;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // SEXTO: Manejar casos contextuales
+        if (intent.isContextual || intent.isChangeCharacter) {
+            // Si es cambio de personaje, mantener la última acción
+            if (intent.isChangeCharacter && !intent.action && chatbotState.conversationContext.lastIntent) {
+                intent.action = chatbotState.conversationContext.lastIntent.action;
+            }
+
+            // Si es contextual, usar el personaje del contexto
+            if (intent.isContextual && !intent.character) {
+                intent.character = chatbotState.conversationContext.currentCharacter?.toLowerCase();
+            }
+        }
+
+        return intent;
+    }
+
+    function getCharacterId(characterName) {
+        if (!characterName) return null;
+
+        for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+            const doc = docWrapper.data || docWrapper;
+            const name = getFieldValue(doc, chatbotState.config.jsonFields.characterName);
+
+            if (name && name.toLowerCase() === characterName.toLowerCase()) {
+                // Primero intentar obtener el ID del documento (por si acaso existe)
+                if (doc.Id) return doc.Id.toString();
+                if (doc.ID) return doc.ID.toString();
+                if (doc.CharacterID) return doc.CharacterID.toString();
+                if (doc.CharaID) return doc.CharaID.toString();
+
+                // NUEVO: Obtener el ID desde la primera skill
+                const skillsContainer = getFieldValue(doc, chatbotState.config.jsonFields.skillsContainer);
+                if (skillsContainer && typeof skillsContainer === 'object') {
+                    const firstSkillId = Object.keys(skillsContainer)[0];
+                    if (firstSkillId && firstSkillId.length >= 6) {
+                        // Quitar los últimos 2 dígitos (130801 -> 1308)
+                        const characterId = firstSkillId.slice(0, -2);
+                        return characterId;
+                    }
+                }
+
+                // Si no, intentar del nombre del archivo
+                const idMatch = filename.match(/(\d{4,})/);
+                if (idMatch) {
+                    return idMatch[1];
+                }
+
+                // Si el archivo empieza con números
+                const startNumbers = filename.match(/^(\d+)/);
+                if (startNumbers) {
+                    return startNumbers[1];
+                }
+            }
+        }
+        return null;
+    }
+
+    // Función para encontrar el cono de luz de un personaje
+    function findLightconeForCharacter(characterName) {
+        const normalizedCharName = characterName.toLowerCase();
+
+        // Buscar en las asociaciones configuradas
+        for (const [lightconeId, associatedChar] of Object.entries(chatbotState.config.lightconeAssociations)) {
+            if (associatedChar.toLowerCase() === normalizedCharName) {
+                // Buscar el documento del cono
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (filename.includes(lightconeId) && isLightcone(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+                        return {
+                            id: lightconeId,
+                            doc: doc,
+                            filename: filename,
+                            folder: docWrapper.folder
+                        };
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    function getFieldValue(obj, fieldList) {
+        const actualObj = obj.data || obj;
+        for (const field of fieldList) {
+            if (actualObj && actualObj[field] !== undefined) {
+                return actualObj[field];
+            }
+        }
+        return null;
+    }
+
+    // Búsqueda inteligente
+    function intelligentSearch(query, intent) {
+        const results = [];
+
+        // Función auxiliar mejorada
+        const getFieldValue = (obj, fieldList) => {
+            const actualObj = obj.data || obj;
+            for (const field of fieldList) {
+                if (actualObj && actualObj[field] !== undefined) {
+                    return actualObj[field];
+                }
+            }
+            return null;
+        };
+
+        // Agregar esta función después de getCharacterIconPath
+        function translateStatName(statType) {
+            const statTranslations = {
+                'AttackAddedRatio': 'ATK',
+                'AttackDelta': 'ATK',
+                'HPAddedRatio': 'HP',
+                'HPDelta': 'HP',
+                'DefenceAddedRatio': 'DEF',
+                'DefenceDelta': 'DEF',
+                'SpeedDelta': 'Speed',
+                'CriticalChanceBase': 'CRIT Rate',
+                'CriticalDamageBase': 'CRIT DMG',
+                'StatusProbabilityBase': 'Effect Hit Rate',
+                'StatusResistanceBase': 'Effect RES',
+                'BreakDamageAddedRatioBase': 'Break Effect',
+                'HealRatioBase': 'Outgoing Healing',
+                'SPRatioBase': 'Energy Regeneration Rate',
+                'AllDamageTypeAddedRatio': 'All DMG',
+                'PhysicalAddedRatio': 'Physical DMG Boost',
+                'FireAddedRatio': 'Fire DMG Boost',
+                'IceAddedRatio': 'Ice DMG Boost',
+                'ThunderAddedRatio': 'Lightning DMG Boost',
+                'WindAddedRatio': 'Wind DMG Boost',
+                'QuantumAddedRatio': 'Quantum DMG Boost',
+                'ImaginaryAddedRatio': 'Imaginary DMG Boost'
+            };
+
+            return statTranslations[statType] || statType;
+        }
+
+        // Filtrar por personaje mejorado
+        const filterByCharacter = (doc) => {
+            if (!intent.character) return true;
+            const charName = getFieldValue(doc, chatbotState.config.jsonFields.characterName);
+            return charName && charName.toLowerCase().includes(intent.character.toLowerCase());
+        };
+
+        switch (intent.action) {
+            case 'artifact_info':
+                let searchArtifact = intent.details?.extra || intent.character;
+
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isArtifact(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+
+                        // Si hay búsqueda específica
+                        if (searchArtifact) {
+                            const artifactName = doc.Name?.toLowerCase() || '';
+                            if (!artifactName.includes(searchArtifact.toLowerCase())) continue;
+                        }
+
+                        results.push({
+                            type: 'artifact',
+                            name: doc.Name,
+                            icon: doc.Icon,
+                            parts: doc.Parts,
+                            bonuses: doc.RequireNum,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+
+            case 'item_info':
+                let searchItem = intent.details?.extra || intent.character;
+
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isItem(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+
+                        // Si hay búsqueda específica
+                        if (searchItem) {
+                            const itemName = doc.ItemName?.toLowerCase() || '';
+                            if (!itemName.includes(searchItem.toLowerCase())) continue;
+                        }
+
+                        results.push({
+                            type: 'item',
+                            name: doc.ItemName,
+                            rarity: doc.Rarity,
+                            desc: doc.ItemDesc,
+                            bgDesc: doc.ItemBGDesc,
+                            sources: doc.ItemComefrom,
+                            icon: doc.ItemIconPath,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+
+            case 'all_artifacts':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isArtifact(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+                        results.push({
+                            type: 'artifact_list',
+                            name: doc.Name,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+
+            case 'all_items':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isItem(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+                        results.push({
+                            type: 'item_list',
+                            name: doc.ItemName,
+                            rarity: doc.Rarity,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+            case 'traces':
+            case 'trace_abilities':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (!filterByCharacter(docWrapper)) continue;
+                    if (isLightcone(docWrapper)) continue;
+
+                    const doc = docWrapper.data || docWrapper;
+
+                    const possibleTracesFields = ['SkillTrees', 'SkillTree', 'Traces', 'Trace', 'Rastros'];
+                    let skillTreesContainer = null;
+
+                    for (const field of possibleTracesFields) {
+                        if (doc[field]) {
+                            skillTreesContainer = doc[field];
+                            break;
+                        }
+                    }
+
+                    if (skillTreesContainer) {
+                        const traces = [];
+                        const stats = [];
+                        const processedNodes = new Set();
+
+                        const processTraceNode = (node, nodeId) => {
+                            if ((node.PointName || node.Name) && (node.PointDesc || node.Desc)) {
+                                const nodeName = node.PointName || node.Name;
+                                const nodeDesc = node.PointDesc || node.Desc || node.Description;
+
+                                if (!processedNodes.has(nodeName) && nodeDesc !== 'undefined') {
+                                    processedNodes.add(nodeName);
+
+                                    // Formatear la descripción con los parámetros
+                                    const formattedDesc = formatTraceDescription(
+                                        nodeDesc,
+                                        node.ParamList || []
+                                    );
+
+                                    traces.push({
+                                        name: nodeName,
+                                        desc: formattedDesc,
+                                        anchor: node.Anchor,
+                                        rawDesc: nodeDesc,
+                                        params: node.ParamList
+                                    });
+                                }
+                            }
+
+                            if (node.StatusAddList && !processedNodes.has(`stats_${nodeId}`)) {
+                                processedNodes.add(`stats_${nodeId}`);
+                                node.StatusAddList.forEach(stat => {
+                                    if (stat.Value && stat.Value > 0) {
+                                        stats.push({
+                                            type: stat.PropertyType || stat.Type,
+                                            value: stat.Value,
+                                            name: translateStatName(stat.PropertyType || stat.Type)
+                                        });
+                                    }
+                                });
+                            }
+                        };
+
+                        if (typeof skillTreesContainer === 'object') {
+                            Object.entries(skillTreesContainer).forEach(([nodeId, nodeData]) => {
+                                if (typeof nodeData === 'object') {
+                                    if (nodeData['1'] || nodeData['2'] || nodeData['3']) {
+                                        const levels = Object.keys(nodeData)
+                                            .filter(k => !isNaN(k))
+                                            .map(k => parseInt(k))
+                                            .sort((a, b) => b - a);
+
+                                        if (levels.length > 0) {
+                                            const highestLevel = levels[0];
+                                            const node = nodeData[highestLevel];
+                                            if (node) {
+                                                processTraceNode(node, nodeId);
+                                            }
+                                        }
+                                    } else {
+                                        processTraceNode(nodeData, nodeId);
+                                    }
+                                }
+                            });
+                        }
+
+                        if (traces.length > 0 || stats.length > 0) {
+                            results.push({
+                                type: intent.action === 'trace_abilities' ? 'trace_abilities' : 'all_traces',
+                                character: getFieldValue(doc, chatbotState.config.jsonFields.characterName),
+                                abilities: traces,
+                                stats: stats,
+                                file: filename
+                            });
+                        }
+                    }
+                }
+                break;
+            case 'eidolons':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (!filterByCharacter(docWrapper)) continue;
+                    if (isLightcone(docWrapper)) continue;
+
+                    const doc = docWrapper.data || docWrapper;
+
+                    // Buscar en diferentes posibles ubicaciones
+                    const possibleRanksFields = ['Ranks', 'Eidolons', 'Rank', 'Eidolon'];
+                    let ranksContainer = null;
+
+                    for (const field of possibleRanksFields) {
+                        if (doc[field]) {
+                            ranksContainer = doc[field];
+                            break;
+                        }
+                    }
+
+                    if (ranksContainer) {
+                        const eidolons = Object.entries(ranksContainer)
+                            .map(([key, value]) => ({
+                                number: parseInt(key) || key,
+                                name: value.Name || value.Title || `Eidolón ${key}`,
+                                desc: value.Desc || value.Description || 'Sin descripción',
+                                params: value.ParamList || value.Params || []
+                            }))
+                            .sort((a, b) => {
+                                if (typeof a.number === 'number' && typeof b.number === 'number') {
+                                    return a.number - b.number;
+                                }
+                                return 0;
+                            });
+
+                        if (eidolons.length > 0) {
+                            results.push({
+                                type: 'eidolons',
+                                character: getFieldValue(doc, chatbotState.config.jsonFields.characterName),
+                                eidolons: eidolons,
+                                file: filename
+                            });
+                        }
+                    }
+                }
+                break;
+            case 'lightcone_info':
+                let searchCharacter = intent.character;
+
+                // Intentar extraer el personaje de la consulta
+                if (!searchCharacter && query.toLowerCase().includes('de ')) {
+                    const parts = query.toLowerCase().split('de ');
+                    if (parts[1]) {
+                        const possibleChar = parts[1].trim();
+                        for (const entity of chatbotState.conversationContext.entities) {
+                            if (entity.includes(possibleChar) || possibleChar.includes(entity)) {
+                                searchCharacter = entity;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (searchCharacter) {
+                    const lightcone = findLightconeForCharacter(searchCharacter);
+                    if (lightcone) {
+                        results.push({
+                            type: 'lightcone',
+                            character: searchCharacter,
+                            lightcone: lightcone.doc,
+                            lightconeId: lightcone.id,
+                            file: lightcone.filename
+                        });
+                    }
+                }
+                break;
+
+            case 'all_lightcones':
+                // Mostrar todos los conos de luz disponibles
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isLightcone(docWrapper)) {
+                        const doc = docWrapper.data || docWrapper;
+                        const associatedChar = Object.entries(chatbotState.config.lightconeAssociations)
+                            .find(([id, _]) => filename.includes(id))?.[1];
+
+                        results.push({
+                            type: 'lightcone_list',
+                            lightcone: doc,
+                            lightconeId: filename.replace('.json', ''),
+                            character: associatedChar,
+                            file: filename,
+                            folder: docWrapper.folder
+                        });
+                    }
+                }
+                break;
+
+            case 'basic_attack':
+            case 'main_skill':
+            case 'ultimate':
+            case 'talent':
+            case 'technique':
+            case 'enhanced_basic':
+                for (const [filename, doc] of Object.entries(chatbotState.documents)) {
+                    if (!filterByCharacter(doc)) continue;
+                    if (isLightcone(doc)) continue; // Saltar conos de luz
+
+                    const skillsContainer = getFieldValue(doc, chatbotState.config.jsonFields.skillsContainer);
+                    if (skillsContainer) {
+                        const patternKey = intent.action.replace('_attack', '').replace('main_', '');
+                        const pattern = chatbotState.config.skillPatterns[patternKey] ||
+                            chatbotState.config.skillPatterns.basic;
+
+                        const skill = findSkillByPattern(skillsContainer, pattern);
+                        if (skill) {
+                            results.push({
+                                type: 'skill',
+                                skillType: getSkillTypeName(intent.action),
+                                character: getFieldValue(doc, chatbotState.config.jsonFields.characterName),
+                                skill: skill,
+                                file: filename
+                            });
+                        }
+                    }
+                }
+                break;
+
+            case 'all_skills':
+                for (const [filename, doc] of Object.entries(chatbotState.documents)) {
+                    if (!filterByCharacter(doc)) continue;
+                    if (isLightcone(doc)) continue;
+
+                    const skillsContainer = getFieldValue(doc, chatbotState.config.jsonFields.skillsContainer);
+                    if (skillsContainer) {
+                        const skills = [];
+
+                        // Orden específico de habilidades
+                        const skillOrder = [
+                            { pattern: chatbotState.config.skillPatterns.basic, type: 'Ataque Básico' },
+                            { pattern: chatbotState.config.skillPatterns.enhancedBasic, type: 'Ataque Básico Mejorado' },
+                            { pattern: chatbotState.config.skillPatterns.skill, type: 'Skill' },
+                            { pattern: chatbotState.config.skillPatterns.ultimate, type: 'Ultimate' },
+                            { pattern: chatbotState.config.skillPatterns.talent, type: 'Talento' },
+                            { pattern: chatbotState.config.skillPatterns.technique, type: 'Técnica' }
+                        ];
+
+                        skillOrder.forEach(({ pattern, type }) => {
+                            const skill = findSkillByPattern(skillsContainer, pattern);
+                            if (skill) {
+                                skills.push({
+                                    type: type,
+                                    name: getFieldValue(skill, chatbotState.config.jsonFields.skillName),
+                                    desc: getFieldValue(skill, chatbotState.config.jsonFields.skillDesc),
+                                    cost: getFieldValue(skill, chatbotState.config.jsonFields.skillCost),
+                                    skill: skill
+                                });
+                            }
+                        });
+
+                        if (skills.length > 0) {
+                            results.push({
+                                type: 'all_skills',
+                                character: getFieldValue(doc, chatbotState.config.jsonFields.characterName),
+                                skills: skills,
+                                file: filename
+                            });
+                        }
+                    }
+                }
+                break;
+
+            case 'character_info':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (!filterByCharacter(docWrapper)) continue;
+                    if (isLightcone(docWrapper)) continue;
+
+                    const doc = docWrapper.data || docWrapper;
+                    const name = getFieldValue(doc, chatbotState.config.jsonFields.characterName);
+
+                    if (name) {
+                        results.push({
+                            type: 'character_info',
+                            character: name,
+                            description: getFieldValue(doc, chatbotState.config.jsonFields.characterDesc) || 'Sin descripción',
+                            rarity: doc.Rarity || 'Desconocida',
+                            baseType: doc.BaseType || 'Desconocido',
+                            damageType: doc.DamageType || 'Desconocido',
+                            voiceActors: doc.CharaInfo?.VA || null,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+
+            case 'list_characters':
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    if (isLightcone(docWrapper)) continue;
+
+                    const doc = docWrapper.data || docWrapper;
+                    const name = getFieldValue(doc, chatbotState.config.jsonFields.characterName);
+
+                    if (name) {
+                        results.push({
+                            type: 'character',
+                            name: name,
+                            rarity: doc.Rarity,
+                            baseType: doc.BaseType,
+                            damageType: doc.DamageType,
+                            file: filename
+                        });
+                    }
+                }
+                break;
+
+            default:
+                // Búsqueda general
+                const normalizedQuery = normalizeText(query);
+                for (const [filename, docWrapper] of Object.entries(chatbotState.documents)) {
+                    const doc = docWrapper.data || docWrapper;
+                    searchInObject(doc, '', filename, normalizedQuery, results);
+                }
+        }
+
+        return results;
+    }
+
+    // Función auxiliar para encontrar skill por patrón
+    function findSkillByPattern(skillsContainer, pattern) {
+        if (!skillsContainer) return null;
+        const skillId = Object.keys(skillsContainer).find(id => id.endsWith(pattern));
+        return skillId ? skillsContainer[skillId] : null;
+    }
+
+    // Función para obtener el nombre del tipo de skill
+    function getSkillTypeName(action) {
+        const names = {
+            'basic_attack': 'Ataque Básico',
+            'main_skill': 'Skill Principal',
+            'ultimate': 'Ultimate',
+            'talent': 'Talento',
+            'technique': 'Técnica',
+            'enhanced_basic': 'Ataque Básico Mejorado'
+        };
+        return names[action] || 'Habilidad';
+    }
+
+    // Búsqueda recursiva en objetos
+    function searchInObject(obj, path, filename, query, results) {
+        if (!obj || typeof obj !== 'object') return;
+
+        for (const [key, value] of Object.entries(obj)) {
+            const currentPath = path ? `${path}.${key}` : key;
+
+            if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                searchInObject(value, currentPath, filename, query, results);
+            } else if (value) {
+                const valueStr = value.toString().toLowerCase();
+                if (key.toLowerCase().includes(query) || valueStr.includes(query)) {
+                    results.push({
+                        type: 'general',
+                        path: currentPath,
+                        key: key,
+                        value: value,
+                        file: filename
+                    });
+                }
+            }
+        }
+    }
+
+    // Formatear descripción de habilidad
+    function formatSkillDescription(skill, characterName = null, skillType = null) {
+        if (!skill || !skill.Desc) return { description: 'Sin descripción', level: 1 };
+
+        let desc = skill.Desc;
+        let targetMaxLevel = 10;
+
+        if (skillType === 'Ataque Básico' || skill.Type === 'Normal') {
+            targetMaxLevel = 6;
+        }
+
+        let maxLevel = targetMaxLevel;
+        let maxLevelParams = [];
+
+        if (skill.Level) {
+            const levels = Object.keys(skill.Level).map(k => parseInt(k)).sort((a, b) => a - b);
+            const validLevel = levels.filter(l => l <= targetMaxLevel).pop() || levels[0];
+            maxLevel = validLevel;
+
+            if (skill.Level[maxLevel] && skill.Level[maxLevel].ParamList) {
+                maxLevelParams = skill.Level[maxLevel].ParamList;
+            }
+        }
+
+        // Reemplazar parámetros
+        desc = desc.replace(/#(\d+)\[([if]\d?)\]%?/g, (match, paramIndex, format) => {
+            const index = parseInt(paramIndex) - 1;
+            if (maxLevelParams[index] !== undefined) {
+                const value = maxLevelParams[index];
+
+                if (format.startsWith('i')) {
+                    return `**${Math.round(value)}**`;
+                } else if (format.startsWith('f')) {
+                    const decimals = format.length > 1 ? parseInt(format[1]) : 1;
+                    return `**${(value * 100).toFixed(decimals)}%**`;
+                } else {
+                    if (value < 2) {
+                        return `**${(value * 100).toFixed(0)}%**`;
+                    } else {
+                        return `**${Math.round(value)}**`;
+                    }
+                }
+            }
+            return match;
+        });
+
+        // Limpiar tags
+        desc = desc.replace(/<color=[^>]+>/g, '').replace(/<\/color>/g, '');
+        desc = desc.replace(/<unbreak>/g, '**').replace(/<\/unbreak>/g, '**');
+        desc = desc.replace(/\\n/g, ' ');
+
+        if (characterName) {
+            desc = desc.replace(/character's/gi, `${characterName}'s`);
+        }
+
+        return { description: desc, level: maxLevel };
+    }
+
+    // Formatear refinamiento de cono de luz
+    function formatLightconeRefinement(refinements, level = 1) {
+        if (!refinements || !refinements.Desc || !refinements.Level) return 'Sin descripción';
+
+        let desc = refinements.Desc;
+        const levelData = refinements.Level[level.toString()];
+
+        if (!levelData || !levelData.ParamList) return desc;
+
+        const params = levelData.ParamList;
+
+        // Reemplazar parámetros
+        desc = desc.replace(/#(\d+)\[([if]\d?)\]%?/g, (match, paramIndex, format) => {
+            const index = parseInt(paramIndex) - 1;
+            if (params[index] !== undefined) {
+                const value = params[index];
+
+                if (format.startsWith('i')) {
+                    return `**${Math.round(value)}**`;
+                } else if (format.startsWith('f')) {
+                    const decimals = format.length > 1 ? parseInt(format[1]) : 1;
+                    return `**${(value * 100).toFixed(decimals)}%**`;
+                } else {
+                    if (value < 2) {
+                        return `**${(value * 100).toFixed(0)}%**`;
+                    } else {
+                        return `**${Math.round(value)}**`;
+                    }
+                }
+            }
+            return match;
+        });
+
+        // Limpiar tags
+        desc = desc.replace(/<color=[^>]+>/g, '').replace(/<\/color>/g, '');
+        desc = desc.replace(/<unbreak>/g, '**').replace(/<\/unbreak>/g, '**');
+        desc = desc.replace(/\\n/g, ' ');
+
+        return desc;
+    }
+
+    function formatTraceDescription(desc, params = []) {
+        if (!desc || !params || params.length === 0) return desc;
+
+        let formattedDesc = desc;
+
+        // Reemplazar parámetros #1[i], #2[i], etc.
+        formattedDesc = formattedDesc.replace(/#(\d+)\[([if]\d?)\]%?/g, (match, paramIndex, format) => {
+            const index = parseInt(paramIndex) - 1;
+            if (params[index] !== undefined) {
+                const value = params[index];
+
+                // Determinar formato basado en el tipo y el contexto
+                if (format.startsWith('i')) {
+                    // Entero
+                    if (value < 1) {
+                        // Si es menor que 1 y tiene formato [i]%, es un porcentaje
+                        return `**${(value * 100).toFixed(0)}%**`;
+                    } else {
+                        // Si es mayor que 1, es un valor entero
+                        return `**${Math.round(value)}**`;
+                    }
+                } else if (format.startsWith('f')) {
+                    // Float con decimales
+                    const decimals = format.length > 1 ? parseInt(format[1]) : 1;
+                    if (value < 1) {
+                        return `**${(value * 100).toFixed(decimals)}%**`;
+                    } else {
+                        return `**${value.toFixed(decimals)}**`;
+                    }
+                } else {
+                    // Por defecto
+                    if (match.includes('%') && value < 1) {
+                        return `**${(value * 100).toFixed(0)}%**`;
+                    } else if (value < 1) {
+                        return `**${(value * 100).toFixed(0)}%**`;
+                    } else {
+                        return `**${Math.round(value)}**`;
+                    }
+                }
+            }
+            return match;
+        });
+
+        // Limpiar tags HTML
+        formattedDesc = formattedDesc.replace(/<unbreak>/g, '');
+        formattedDesc = formattedDesc.replace(/<\/unbreak>/g, '');
+        formattedDesc = formattedDesc.replace(/<color=[^>]+>/g, '');
+        formattedDesc = formattedDesc.replace(/<\/color>/g, '');
+        formattedDesc = formattedDesc.replace(/\\n/g, ' ');
+
+        return formattedDesc;
+    }
+
+    // Generar respuesta
+    function generateResponse(results, intent, query) {
+        if (results.length === 0) {
+            // Mensaje más específico según el contexto
+            if (intent.character || chatbotState.conversationContext.currentCharacter) {
+                const charName = intent.character || chatbotState.conversationContext.currentCharacter;
+                let helpMessage = `No encontré ${intent.action ? intent.action.replace(/_/g, ' ') : 'esa información'} para **${charName}**.\n\n`;
+
+                // Si fue un cambio de personaje fallido
+                if (intent.isChangeCharacter && intent.character) {
+                    helpMessage = `No encontré información sobre **${intent.character}**. `;
+                    helpMessage += `¿Tal vez quisiste decir otro personaje?\n\n`;
+                }
+
+                helpMessage += `**Personajes disponibles:** ${getAvailableCharacters().slice(0, 8).join(', ')}...\n\n`;
+                helpMessage += `Puedes preguntarme:\n`;
+                helpMessage += `• "Dame los rastros de [personaje]"\n`;
+                helpMessage += `• "¿Cuál es la ultimate de [personaje]?"\n`;
+                helpMessage += `• "Muéstrame todas las habilidades de [personaje]"`;
+
+                return helpMessage;
+            }
+            return generateNoResultsResponse(query, intent);
+        }
+
+        // IMPORTANTE: Actualizar el contexto según el tipo de consulta
+        if (results[0].character) {
+            // Si es un cambio explícito de personaje o una consulta nueva
+            if (intent.isChangeCharacter || (!intent.isContextual && intent.character)) {
+                chatbotState.conversationContext.currentCharacter = results[0].character;
+                updateContextIndicator();
+            }
+            // Si es contextual, mantener el personaje pero actualizar si encontramos info de otro
+            else if (intent.isContextual && results[0].character !== chatbotState.conversationContext.currentCharacter) {
+                // Esto no debería pasar, pero por si acaso
+                chatbotState.conversationContext.currentCharacter = results[0].character;
+                updateContextIndicator();
+            }
+        }
+
+        // Guardar el intent actual
+        chatbotState.conversationContext.lastIntent = intent;
+        chatbotState.conversationContext.lastResults = results;
+
+        let response = '';
+
+        switch (intent.action || results[0].type) {
+            case 'artifact':
+                const artifactResult = results[0];
+                response = `**🎭 Set de Artefactos: ${artifactResult.name}**\n\n`;
+
+                // Mostrar nombres de las piezas
+                response += `**📦 Piezas del set:**\n`;
+                Object.values(artifactResult.parts).forEach(part => {
+                    response += `• ${part.Name}\n`;
+                });
+                response += '\n';
+
+                // Mostrar bonuses
+                response += `**✨ Bonuses del set:**\n\n`;
+                Object.entries(artifactResult.bonuses).forEach(([pieces, bonus]) => {
+                    let desc = bonus.Desc;
+                    // Formatear parámetros
+                    if (bonus.ParamList) {
+                        desc = desc.replace(/#(\d+)\[i\]%?/g, (match, paramIndex) => {
+                            const index = parseInt(paramIndex) - 1;
+                            if (bonus.ParamList[index] !== undefined) {
+                                const value = bonus.ParamList[index];
+                                return `**${(value * 100).toFixed(0)}%**`;
+                            }
+                            return match;
+                        });
+                    }
+                    // Limpiar tags
+                    desc = desc.replace(/<unbreak>/g, '').replace(/<\/unbreak>/g, '');
+
+                    response += `**${pieces}-Pc:** ${desc}\n`;
+                });
+                break;
+
+            case 'item':
+                const itemResult = results[0];
+                response = `**📦 Item: ${itemResult.name}**\n\n`;
+
+                // Mostrar rareza
+                response += `**Rareza:** ${formatItemRarity(itemResult.rarity)}\n\n`;
+
+                // Descripción
+                response += `**📄 Descripción:**\n${itemResult.desc}\n\n`;
+
+                // Descripción del lore
+                if (itemResult.bgDesc) {
+                    response += `**📖 Lore:**\n`;
+                    response += `<div class="info-section">`;
+                    response += itemResult.bgDesc.replace(/\\n\\n/g, '\n\n').replace(/<i>/g, '*').replace(/<\/i>/g, '*');
+                    response += `</div>\n\n`;
+                }
+
+                // Fuentes de obtención
+                if (itemResult.sources && itemResult.sources.length > 0) {
+                    response += `**📍 Obtención:**\n`;
+                    itemResult.sources.forEach(source => {
+                        response += `• ${source.Desc}\n`;
+                    });
+                }
+                break;
+
+            case 'artifact_list':
+                response = `**🎭 Artefactos disponibles (${results.length}):**\n\n`;
+                results.forEach(artifact => {
+                    response += `• ${artifact.name}\n`;
+                });
+                response += `\n💡 Pregúntame sobre un set específico para ver sus detalles.`;
+                break;
+
+            case 'item_list':
+                response = `**📦 Items disponibles (${results.length}):**\n\n`;
+
+                // Agrupar por rareza
+                const groupedItems = {};
+                results.forEach(item => {
+                    const rarity = formatItemRarity(item.rarity);
+                    if (!groupedItems[rarity]) groupedItems[rarity] = [];
+                    groupedItems[rarity].push(item);
+                });
+
+                // Mostrar ordenados por rareza
+                ['5⭐', '4⭐', '3⭐', '2⭐', '1⭐'].forEach(rarity => {
+                    if (groupedItems[rarity]) {
+                        response += `**${rarity}:**\n`;
+                        groupedItems[rarity].forEach(item => {
+                            response += `• ${item.name}\n`;
+                        });
+                        response += '\n';
+                    }
+                });
+                break;
+            case 'eidolons':
+                const eidolonsResult = results[0];
+                const characterId = getCharacterId(eidolonsResult.character);
+
+                response = `**Eidolones de ${eidolonsResult.character}**:\n\n`;
+
+                if (eidolonsResult.eidolons.length > 0) {
+                    eidolonsResult.eidolons.forEach((eidolon) => {
+                        const eidolonNumber = typeof eidolon.number === 'number' ? eidolon.number : parseInt(eidolon.number);
+
+                        // Agregar imagen si tenemos el ID del personaje
+                        if (characterId && eidolonNumber >= 1 && eidolonNumber <= 6) {
+                            const imagePath = `/Img/Eidolons/${characterId}_Rank_${eidolonNumber}.webp`;
+                            response += `[IMG:${imagePath}]\n`;
+                        }
+
+                        response += `**E${eidolonNumber}: ${eidolon.name}**\n`;
+
+                        // Limpiar la descripción de tags HTML
+                        let cleanDesc = eidolon.desc
+                            .replace(/<unbreak>/g, '')
+                            .replace(/<\/unbreak>/g, '')
+                            .replace(/<u>/g, '')
+                            .replace(/<\/u>/g, '');
+
+                        // Formatear parámetros si existen
+                        if (eidolon.params && eidolon.params.length > 0) {
+                            cleanDesc = cleanDesc.replace(/#(\d+)\[i\]%?/g, (match, paramIndex) => {
+                                const index = parseInt(paramIndex) - 1;
+                                if (eidolon.params[index] !== undefined) {
+                                    const value = eidolon.params[index];
+                                    if (value < 1) {
+                                        return `**${(value * 100).toFixed(1)}%**`;
+                                    } else {
+                                        return `**${Math.round(value)}**`;
+                                    }
+                                }
+                                return match;
+                            });
+                        }
+
+                        response += `${cleanDesc}\n\n`;
+                    });
+                } else {
+                    response += 'No se encontraron eidolones para este personaje.';
+                }
+                break;
+
+            case 'traces':
+            case 'trace_abilities':
+                const tracesResult = results[0];
+                response = `**Rastros de ${tracesResult.character}**:\n\n`;
+
+                if (tracesResult.abilities.length > 0) {
+                    response += `**Habilidades de Rastros:**\n`;
+                    tracesResult.abilities.forEach((ability) => {
+                        response += `• **${ability.name}**: ${ability.desc}\n`;
+                    });
+                    response += '\n';
+                }
+
+                if (tracesResult.stats.length > 0) {
+                    response += `**Mejoras de Stats:**\n`;
+                    const groupedStats = {};
+
+                    tracesResult.stats.forEach((stat) => {
+                        const statName = stat.name || stat.type;
+                        if (!groupedStats[statName]) {
+                            groupedStats[statName] = 0;
+                        }
+                        groupedStats[statName] += stat.value;
+                    });
+
+                    // Ordenar stats por tipo
+                    const statOrder = ['ATK', 'HP', 'DEF', 'CRIT Rate', 'CRIT DMG', 'Speed'];
+                    const orderedStats = Object.entries(groupedStats).sort((a, b) => {
+                        const indexA = statOrder.indexOf(a[0]);
+                        const indexB = statOrder.indexOf(b[0]);
+                        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+                        if (indexA !== -1) return -1;
+                        if (indexB !== -1) return 1;
+                        return a[0].localeCompare(b[0]);
+                    });
+
+                    orderedStats.forEach(([statName, totalValue]) => {
+                        if (totalValue < 1) {
+                            response += `• **${statName}**: +${(totalValue * 100).toFixed(1)}%\n`;
+                        } else {
+                            response += `• **${statName}**: +${Math.round(totalValue)}\n`;
+                        }
+                    });
+                }
+
+                if (tracesResult.abilities.length === 0 && tracesResult.stats.length === 0) {
+                    response += 'No se encontraron rastros para este personaje.';
+                }
+                break;
+
+            case 'lightcone_info':
+                const lightconeResult = results[0];
+
+                response = `**🌟 Cono de Luz`;
+                if (lightconeResult.character) {
+                    response += ` de ${lightconeResult.character.charAt(0).toUpperCase() + lightconeResult.character.slice(1)}`;
+                }
+                response += `**\n\n`;
+
+                if (lightconeResult.lightcone) {
+                    // Nombre del cono
+                    response += `**⚔️ ${lightconeResult.lightcone.Name || 'Sin nombre'}**\n\n`;
+
+                    // Descripción/Efecto
+                    if (lightconeResult.lightcone.Refinements) {
+                        response += `**✨ Efecto (Refinamiento 1):**\n`;
+                        const refinementDesc = formatLightconeRefinement(lightconeResult.lightcone.Refinements, 1);
+                        response += `<div class="refinement-desc">${refinementDesc}</div>\n\n`;
+                    }
+
+                    // Información básica
+                    response += `**📋 Información:**\n`;
+                    response += `<div class="info-section">`;
+
+                    const rarity = formatRarity(lightconeResult.lightcone.Rarity);
+                    const baseType = formatBaseType(lightconeResult.lightcone.BaseType);
+
+                    response += `⭐ **Rareza:** ${rarity}<br>`;
+                    response += `🛡️ **Camino:** ${baseType}`;
+                    response += `</div>`;
+
+                    // Mostrar todos los niveles de refinamiento si existen
+                    if (lightconeResult.lightcone.Refinements?.Level) {
+                        response += `\n\n**📈 Niveles de Refinamiento:**\n`;
+                        const levels = Object.keys(lightconeResult.lightcone.Refinements.Level);
+                        levels.forEach(level => {
+                            response += `\n**R${level}:** `;
+                            const params = lightconeResult.lightcone.Refinements.Level[level].ParamList;
+                            if (params && params.length > 0) {
+                                response += params.map(p => {
+                                    if (p < 2) return `${(p * 100).toFixed(0)}%`;
+                                    return Math.round(p).toString();
+                                }).join(' / ');
+                            }
+                        });
+                    }
+                } else {
+                    response += `No encontré información específica del cono de luz para ${lightconeResult.character}.`;
+                }
+                break;
+
+            case 'all_lightcones':
+                response = `**🌟 Conos de Luz Disponibles (${results.length}):**\n\n`;
+
+                // Agrupar por rareza
+                const groupedByRarity = {};
+                results.forEach(result => {
+                    const rarity = formatRarity(result.lightcone.Rarity);
+                    if (!groupedByRarity[rarity]) groupedByRarity[rarity] = [];
+                    groupedByRarity[rarity].push(result);
+                });
+
+                // Ordenar por rareza descendente
+                const rarityOrder = ['5 estrellas', '4 estrellas', '3 estrellas'];
+                rarityOrder.forEach(rarity => {
+                    if (groupedByRarity[rarity]) {
+                        response += `**${rarity}:**\n`;
+                        groupedByRarity[rarity].forEach(item => {
+                            const name = item.lightcone.Name || 'Sin nombre';
+                            const baseType = formatBaseType(item.lightcone.BaseType);
+                            response += `• **${name}** (${baseType})`;
+                            if (item.character) {
+                                response += ` - Asociado a ${item.character}`;
+                            }
+                            response += '\n';
+                        });
+                        response += '\n';
+                    }
+                });
+
+                response += `💡 Pregúntame sobre un cono específico para ver sus detalles completos.`;
+                break;
+
+            case 'basic_attack':
+            case 'main_skill':
+            case 'ultimate':
+            case 'talent':
+            case 'technique':
+            case 'enhanced_basic':
+                const skillResult = results[0];
+                const iconPath = getCharacterIconPath(skillResult.character);
+
+                response = `**${skillResult.skillType} de ${skillResult.character}**`;
+                if (iconPath) {
+                    response += ` [IMG:${iconPath}]`;
+                }
+                response += `\n\n`;
+
+                response += `<div class="skill-display">`;
+                response += formatSkillInfo(skillResult.skill, skillResult.character, skillResult.skillType);
+                response += `</div>`;
+                break;
+
+            case 'all_skills':
+                const allSkillsResult = results[0];
+                const allSkillsIcon = getCharacterIconPath(allSkillsResult.character);
+
+                response = `**Todas las habilidades de ${allSkillsResult.character}**`;
+                if (allSkillsIcon) {
+                    response += ` [IMG:${allSkillsIcon}]`;
+                }
+                response += `:\n\n`;
+
+                allSkillsResult.skills.forEach((skill, index) => {
+                    response += `**${index + 1}. ${skill.type}:** ${skill.name || 'Sin nombre'}\n`;
+
+                    const { description: formattedDesc, level: usedLevel } = formatSkillDescription(
+                        skill.skill,
+                        allSkillsResult.character,
+                        skill.type
+                    );
+
+                    response += `${formattedDesc}\n`;
+                    response += `*(Nivel ${usedLevel})*\n`;
+
+                    if (skill.cost) response += `**Costo:** ${skill.cost} SP\n`;
+                    response += `\n`;
+                });
+                break;
+
+            case 'character_info':
+                const infoResult = results[0];
+                const charIconPath = getCharacterIconPath(infoResult.character);
+
+                response = `**📊 Información completa de ${infoResult.character}**`;
+                if (charIconPath) {
+                    response += ` [IMG:${charIconPath}]`;
+                }
+                response += `\n\n`;
+
+                if (infoResult.description && infoResult.description !== 'Sin descripción') {
+                    response += `**📖 Historia:**\n`;
+                    response += `<div class="info-section">${infoResult.description}</div>\n\n`;
+                }
+
+                response += `**📋 Datos básicos:**\n`;
+                response += `<div class="info-section">`;
+                response += `⭐ **Rareza:** ${formatRarity(infoResult.rarity)}<br>`;
+                response += `🛡️ **Camino:** ${formatBaseType(infoResult.baseType)}<br>`;
+                response += `⚔️ **Elemento:** ${infoResult.damageType}`;
+                response += `</div>`;
+
+                // Buscar si tiene un cono asociado
+                const associatedLightcone = findLightconeForCharacter(infoResult.character);
+                if (associatedLightcone) {
+                    response += `\n\n**🌟 Cono de Luz Asociado:**\n`;
+                    response += `${associatedLightcone.doc.Name || 'Sin nombre'} (${formatRarity(associatedLightcone.doc.Rarity)})`;
+                }
+                break;
+
+            case 'list_characters':
+                response = `**Personajes disponibles (${results.length}):**\n\n`;
+
+                // Agrupar por rareza
+                const groupedChars = {};
+                results.forEach(char => {
+                    const rarity = formatRarity(char.rarity);
+                    if (!groupedChars[rarity]) groupedChars[rarity] = [];
+                    groupedChars[rarity].push(char);
+                });
+
+                ['5 estrellas', '4 estrellas', '3 estrellas'].forEach(rarity => {
+                    if (groupedChars[rarity]) {
+                        response += `**${rarity}:**\n`;
+                        groupedChars[rarity].forEach(char => {
+                            response += `• **${char.name}** (${formatBaseType(char.baseType)}, ${char.damageType})\n`;
+                        });
+                        response += '\n';
+                    }
+                });
+                break;
+
+            default:
+                response = `Encontré ${results.length} resultado(s) para "${query}":\n\n`;
+                results.slice(0, 10).forEach(result => {
+                    const value = typeof result.value === 'string' && result.value.length > 100 ?
+                        result.value.substring(0, 100) + '...' : result.value;
+                    response += `📄 **${result.file}**\n${result.path} → ${result.key}: ${value}\n\n`;
+                });
+        }
+
+        response += generateImprovedContextualSuggestions(intent, results[0]);
+        return response;
+    }
+
+    function generateImprovedContextualSuggestions(intent, result) {
+        let suggestions = '\n\n💡 ';
+
+        if (result && result.character) {
+            const character = result.character;
+
+            // Sugerencias basadas en lo que acabamos de mostrar
+            const actionSuggestions = {
+                'eidolons': [
+                    `"¿Y sus rastros?"`,
+                    `"Dame todas sus habilidades"`,
+                    `"¿Y los de [otro personaje]?"`
+                ],
+                'traces': [
+                    `"¿Y sus eidolones?"`,
+                    `"¿Cuál es su ultimate?"`,
+                    `"Y los de [otro personaje]?"`
+                ],
+                'ultimate': [
+                    `"¿Y su talento?"`,
+                    `"Dame todos sus rastros"`,
+                    `"La ulti de [otro personaje]"`
+                ],
+                'all_skills': [
+                    `"¿Y sus eidolones?"`,
+                    `"Dame sus rastros"`,
+                    `"Las habilidades de [otro personaje]"`
+                ]
+            };
+
+            const suggestionList = actionSuggestions[intent.action] || [
+                `"Rastros"`,
+                `"Eidolones"`,
+                `"Y los de [otro personaje]?"`
+            ];
+
+            suggestions += `Puedes continuar preguntando:\n`;
+            suggestionList.forEach(s => {
+                suggestions += `• ${s}\n`;
+            });
+        } else {
+            suggestions += 'Pregúntame sobre cualquier personaje, sus habilidades, eidolones o rastros.';
+        }
+
+        return suggestions;
+    }
+
+    // Función para obtener path de icono de personaje
+    function getCharacterIconPath(characterName) {
+        if (!characterName) return null;
+        const fileName = characterName.toLowerCase().replace(/\s+/g, '_');
+        return `/Img/CharaIcon/${fileName}-character_icon.webp`;
+    }
+
+    // Formatear información de skill
+    function formatSkillInfo(skill, characterName = null, skillType = null) {
+        const getName = () => {
+            for (const field of chatbotState.config.jsonFields.skillName) {
+                if (skill[field]) return skill[field];
+            }
+            return 'Sin nombre';
+        };
+
+        const getCost = () => {
+            for (const field of chatbotState.config.jsonFields.skillCost) {
+                if (skill[field]) return skill[field];
+            }
+            return null;
+        };
+
+        let info = `<h4>${getName()}</h4>\n`;
+
+        const { description: formattedDesc, level: usedLevel } = formatSkillDescription(skill, characterName, skillType);
+        info += `<div class="skill-desc">${formattedDesc}</div>\n`;
+
+        info += `<div class="skill-meta">`;
+        const cost = getCost();
+        if (cost) info += `<span>⚡ <strong>Costo:</strong> ${cost} SP</span>`;
+        info += `<span>📊 <strong>Nivel:</strong> ${usedLevel}</span>`;
+        info += `</div>`;
+
+        return info;
+    }
+
+    // Respuesta cuando no hay resultados
+    function generateNoResultsResponse(query, intent) {
+        let response = `No encontré información específica sobre "${query}".`;
+
+        if (intent.action === 'lightcone_info' && !intent.character) {
+            response = `Para buscar un cono de luz, necesito saber de qué personaje.\n\n`;
+            response += `Por ejemplo:\n`;
+            response += `• "¿Cuál es el cono de Kafka?"\n`;
+            response += `• "Muéstrame el cono de luz de Blade"\n\n`;
+            response += `O puedes preguntarme: "Muéstrame todos los conos de luz" para ver la lista completa.`;
+        } else if (intent.isContextual && !intent.character) {
+            response = `Entiendo que quieres saber sobre ${intent.action ?
+                intent.action.replace(/_/g, ' ') : 'algo'}, pero no especificaste el personaje.\n\n`;
+            response += `Por favor, menciona el nombre del personaje.`;
+        }
+
+        response += '\n\n**Sugerencias:**\n';
+        const characters = getAvailableCharacters();
+        if (characters.length > 0) {
+            response += `• Personajes disponibles: ${characters.slice(0, 5).join(', ')}${characters.length > 5 ? '...' : ''}\n`;
+        }
+        response += '• "Lista de personajes" para ver todos\n';
+        response += '• "Muéstrame todos los conos de luz" para ver los conos disponibles';
+
+        return response;
+    }
+
+    // Generar sugerencias contextuales
+    function generateContextualSuggestions(intent) {
+        let suggestions = '\n\n💡 ';
+
+        if (intent.character) {
+            const contextualSuggestions = {
+                'basic_attack': ['"¿Y la skill principal?"', '"¿Cuál es su ultimate?"'],
+                'main_skill': ['"¿Cuál es su ultimate?"', '"¿Cómo es su talento?"'],
+                'ultimate': ['"¿Cuál es su talento?"', '"¿Y sus eidolones?"'],
+                'lightcone_info': ['"¿Cuáles son sus refinamientos?"', '"¿Y sus habilidades?"'],
+                'character_info': ['"¿Cuáles son sus habilidades?"', '"¿Cuál es su cono de luz?"']
+            };
+
+            const suggestionList = contextualSuggestions[intent.action] || [
+                '"Muéstrame todas sus habilidades"',
+                '"¿Cuál es su cono de luz?"'
+            ];
+
+            suggestions += `Puedes preguntarme: ${suggestionList[Math.floor(Math.random() * suggestionList.length)]}`;
+        } else {
+            suggestions += 'Pregúntame sobre cualquier personaje, sus habilidades o conos de luz.';
+        }
+
+        return suggestions;
+    }
+
+    // Procesar consulta
+    function processQuery(query) {
+        if (Object.keys(chatbotState.documents).length === 0) {
+            return 'No hay documentos cargados. Esperando carga automática...';
+        }
+
+        // Guardar historial
+        chatbotState.conversationContext.lastQuestion = query;
+        chatbotState.conversationContext.conversationHistory.push({
+            type: 'user',
+            message: query,
+            timestamp: Date.now()
+        });
+
+        // Detectar intención
+        let intent = detectIntent(query);
+
+        // Debug para ver qué está detectando
+        console.log('Query:', query);
+        console.log('Intent:', intent);
+        console.log('Current Character:', chatbotState.conversationContext.currentCharacter);
+
+        // Si no hay personaje ni en la intención ni en el contexto, y hay una acción clara
+        if (!intent.character && intent.action && !chatbotState.conversationContext.currentCharacter) {
+            return `Para ${intent.action.replace(/_/g, ' ')}, necesito saber de qué personaje.\n\nPor favor, especifica el personaje. Por ejemplo:\n• "${query} de [personaje]"\n• "Muéstrame ${intent.action.replace(/_/g, ' ')} de [personaje]"`;
+        }
+
+        // Realizar búsqueda
+        const results = intelligentSearch(query, intent);
+
+        // Si no hay resultados pero hay un personaje específico, intentar búsqueda más flexible
+        if (results.length === 0 && intent.character) {
+            // Intentar con el personaje sin la acción específica para ver qué datos hay
+            const generalResults = intelligentSearch(query, { ...intent, action: null });
+            if (generalResults.length > 0) {
+                return `No encontré ${intent.action ? intent.action.replace(/_/g, ' ') : 'esa información'} específicamente para ${intent.character}, pero encontré otra información. ¿Te gustaría ver los datos disponibles?`;
+            }
+        }
+
+        // Generar respuesta
+        const response = generateResponse(results, intent, query);
+
+        // Guardar respuesta en historial
+        chatbotState.conversationContext.conversationHistory.push({
+            type: 'bot',
+            message: response,
+            timestamp: Date.now()
+        });
+
+        return response;
+    }
+
+    // Enviar mensaje
+    function sendMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+
+        showTypingIndicator();
+
+        setTimeout(() => {
+            hideTypingIndicator();
+            const response = processQuery(message);
+            addMessage(response, 'bot');
+        }, 500 + Math.random() * 500);
+    }
+
+    // Enviar mensaje predefinido
+    function sendPredefinedMessage(message) {
+        document.getElementById('messageInput').value = message;
+        sendMessage();
+    }
+
+    // Limpiar todo
+    function clearAll() {
+        chatbotState.documents = {};
+        chatbotState.conversationContext = {
+            currentCharacter: null,
+            currentTopic: null,
+            lastQuestion: null,
+            lastResults: null,
+            lastIntent: null,
+            conversationHistory: [],
+            entities: new Set()
+        };
+        updateFileCount();
+        updateContextIndicator();
+
+        const chatContainer = document.getElementById('chatContainer');
+        chatContainer.innerHTML = '';
+
+        addMessage('Todo limpiado. Usa "🔄 Recargar" para volver a cargar los archivos.', 'bot');
+    }
+
+    // Funciones de configuración
+    function showConfig() {
+        document.getElementById('configModal').style.display = 'flex';
+
+        // Cargar configuración actual
+        document.getElementById('skillSynonyms').value = formatSynonymsForDisplay();
+        document.getElementById('lightconeAssociations').value = formatAssociationsForDisplay();
+        document.getElementById('jsonFields').value = formatFieldsForDisplay();
+    }
+
+    function closeConfig() {
+        document.getElementById('configModal').style.display = 'none';
+    }
+
+    function saveConfig() {
+        // Guardar sinónimos
+        const synonymsText = document.getElementById('skillSynonyms').value;
+        parseSynonyms(synonymsText);
+
+        // Guardar asociaciones de conos
+        const associationsText = document.getElementById('lightconeAssociations').value;
+        parseAssociations(associationsText);
+
+        // Guardar campos
+        const fieldsText = document.getElementById('jsonFields').value;
+        parseFields(fieldsText);
+
+        // Guardar en localStorage
+        localStorage.setItem('chatbotConfig', JSON.stringify(chatbotState.config));
+
+        closeConfig();
+        addMessage('✅ Configuración guardada. Recarga los datos para aplicar los cambios.', 'bot');
+    }
+
+    // Funciones auxiliares de configuración
+    function formatSynonymsForDisplay() {
+        let text = '';
+        for (const [key, values] of Object.entries(chatbotState.config.synonyms)) {
+            text += `${key}:${values.join(',')}\n`;
+        }
+        return text;
+    }
+
+    function parseSynonyms(text) {
+        chatbotState.config.synonyms = {};
+        text.split('\n').forEach(line => {
+            if (line.trim()) {
+                const [key, values] = line.split(':');
+                if (key && values) {
+                    chatbotState.config.synonyms[key.trim()] = values.split(',').map(v => v.trim());
+                }
+            }
+        });
+    }
+
+    function formatAssociationsForDisplay() {
+        let text = '';
+        for (const [id, character] of Object.entries(chatbotState.config.lightconeAssociations)) {
+            text += `${id}:${character}\n`;
+        }
+        return text;
+    }
+
+    function parseAssociations(text) {
+        chatbotState.config.lightconeAssociations = {};
+        text.split('\n').forEach(line => {
+            if (line.trim()) {
+                const [id, character] = line.split(':');
+                if (id && character) {
+                    chatbotState.config.lightconeAssociations[id.trim()] = character.trim();
+                }
+            }
+        });
+    }
+
+    function formatFieldsForDisplay() {
+        let text = '';
+        for (const [key, values] of Object.entries(chatbotState.config.jsonFields)) {
+            text += `${key}:${values.join(',')}\n`;
+        }
+        return text;
+    }
+
+    function parseFields(text) {
+        chatbotState.config.jsonFields = {};
+        text.split('\n').forEach(line => {
+            if (line.trim()) {
+                const [key, values] = line.split(':');
+                if (key && values) {
+                    chatbotState.config.jsonFields[key.trim()] = values.split(',').map(v => v.trim());
+                }
+            }
+        });
+    }
+
+    // Atajos de teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'l') {
+            e.preventDefault();
+            clearAll();
+        }
+
+        if (e.ctrlKey && e.key === 'r') {
+            e.preventDefault();
+            loadAllFiles();
+        }
+
+        if (e.ctrlKey && e.key === ',') {
+            e.preventDefault();
+            showConfig();
+        }
+    });
+
+    // Modal cerrar al hacer clic fuera
+    document.getElementById('configModal').addEventListener('click', (e) => {
+        if (e.target.id === 'configModal') {
+            closeConfig();
+        }
+    });
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>
+</body>
+</html>
